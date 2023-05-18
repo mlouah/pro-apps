@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230518151212",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "task_status",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statusPicto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TaskStatus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "taskStatus",
+      "relationshipName": "task",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

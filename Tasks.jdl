@@ -1,0 +1,80 @@
+//v1 - 18/05/2023
+
+entity MoM {
+	title String required
+    meetingDate LocalDate
+    docWritingDate LocalDate
+    deadLine LocalDate
+    meetingObjectif TextBlob
+    meetingDocReferences TextBlob
+    isMoMActionsClosed Boolean
+    decisions TextBlob
+    attendees TextBlob
+    //meetingRequester String
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    meetingPhotoCapture ImageBlob
+    notes TextBlob
+}
+
+entity Task
+{
+    subject String
+    title String required
+    dealLine LocalDate
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    notes TextBlob
+}
+
+entity Person {
+	name String required 
+	code String
+    isExternal Boolean
+    notes TextBlob
+}
+
+entity Project
+{
+    name String required
+    code String 
+    notes String
+    isInternal Boolean
+    // ---
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    notes TextBlob
+}
+
+entity TaskStatus
+{
+    code String required
+    status String
+    statusPicto  ImageBlob
+    notes String
+}
+
+entity TaskPriority
+{
+    code String required
+    priority String
+    taskPriorityPicto ImageBlob
+    notes String
+}
+
+relationship OneToMany {
+   TaskPriority{Task(title)} to Task{TaskPriority(priority)}
+   TaskStatus{Task(title)} to Task{TaskStatus(status)}
+   Person{Task(title)} to Task{TaskOwner(name)}
+   MoM{tasks(title)} to Task{TaskMoM(title)}
+   Project{MoMTitle(title)} to MoM{projet(name)}
+   Project{tasks(title)} to Task{ProjectName(name)}
+}
+
+service all with serviceClass 

@@ -1,0 +1,42 @@
+{
+  "applications": "*",
+  "changelogDate": "20230518151213",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "task_priority",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "priority",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskPriorityPicto",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TaskPriority",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "taskPriority",
+      "relationshipName": "task",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

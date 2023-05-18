@@ -1,0 +1,28 @@
+{
+  "proAppsApp": {
+    "taskPriority": {
+      "home": {
+        "title": "Task Priorities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Priority",
+        "createOrEditLabel": "Create or edit a Task Priority",
+        "notFound": "No Task Priorities found"
+      },
+      "created": "A new Task Priority is created with identifier {{ param }}",
+      "updated": "A Task Priority is updated with identifier {{ param }}",
+      "deleted": "A Task Priority is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Priority {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Priority"
+      },
+      "id": "ID",
+      "code": "Code",
+      "priority": "Priority",
+      "taskPriorityPicto": "Task Priority Picto",
+      "notes": "Notes",
+      "task": "Task"
+    }
+  }
+}
