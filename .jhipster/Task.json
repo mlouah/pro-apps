@@ -1,0 +1,83 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182311",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "task",
+  "fields": [
+    {
+      "fieldName": "subject",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "taskTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dealLine",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "isUrgent",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Task",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "taskStatus",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "taskStatus",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "moM",
+      "otherEntityRelationshipName": "tasks",
+      "relationshipName": "taskMoM",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "tasks",
+      "relationshipName": "projectName",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "task",
+      "relationshipName": "taskOwner",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

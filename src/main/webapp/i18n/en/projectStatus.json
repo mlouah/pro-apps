@@ -1,0 +1,36 @@
+{
+  "proAppsApp": {
+    "projectStatus": {
+      "home": {
+        "title": "Project Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Project Status",
+        "createOrEditLabel": "Create or edit a Project Status",
+        "notFound": "No Project Statuses found"
+      },
+      "created": "A new Project Status is created with identifier {{ param }}",
+      "updated": "A Project Status is updated with identifier {{ param }}",
+      "deleted": "A Project Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Project Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Project Status"
+      },
+      "id": "ID",
+      "statusDate": "Status Date",
+      "statusTitle": "Status Title",
+      "updatedProgress": "Updated Progress",
+      "updatedWorkloadEAC": "Updated Workload EAC",
+      "updatedEndDate": "Updated End Date",
+      "updatedCost": "Updated Cost",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "projectName": "Project Name",
+      "projectStatusCode": "Project Status Code"
+    }
+  }
+}

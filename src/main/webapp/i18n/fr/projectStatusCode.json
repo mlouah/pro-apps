@@ -1,0 +1,31 @@
+{
+  "proAppsApp": {
+    "projectStatusCode": {
+      "home": {
+        "title": "ProjectStatusCodes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Status Code",
+        "createOrEditLabel": "Créer ou éditer un Project Status Code",
+        "notFound": "Aucun Project Status Code trouvé"
+      },
+      "created": "Un nouveau Project Status Code a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Status Code avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Status Code avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Status Code {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Status Code"
+      },
+      "id": "ID",
+      "code": "Code",
+      "status": "Status",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "projectStatus": "Project Status"
+    }
+  }
+}

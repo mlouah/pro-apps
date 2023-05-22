@@ -1,0 +1,36 @@
+{
+  "proAppsApp": {
+    "task": {
+      "home": {
+        "title": "Tasks",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Task",
+        "createOrEditLabel": "Créer ou éditer un Task",
+        "notFound": "Aucun Task trouvé"
+      },
+      "created": "Un nouveau Task a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Task avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Task avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Task {{ id }} ?"
+      },
+      "detail": {
+        "title": "Task"
+      },
+      "id": "ID",
+      "subject": "Subject",
+      "taskTitle": "Task Title",
+      "dealLine": "Deal Line",
+      "isUrgent": "Is Urgent",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "taskStatus": "Task Status",
+      "taskMoM": "Task Mo M",
+      "projectName": "Project Name",
+      "taskOwner": "Task Owner"
+    }
+  }
+}

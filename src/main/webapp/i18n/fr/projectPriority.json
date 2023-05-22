@@ -1,0 +1,31 @@
+{
+  "proAppsApp": {
+    "projectPriority": {
+      "home": {
+        "title": "ProjectPriorities",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Priority",
+        "createOrEditLabel": "Créer ou éditer un Project Priority",
+        "notFound": "Aucun Project Priority trouvé"
+      },
+      "created": "Un nouveau Project Priority a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Priority avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Priority avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Priority {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Priority"
+      },
+      "id": "ID",
+      "code": "Code",
+      "priority": "Priority",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "project": "Project"
+    }
+  }
+}

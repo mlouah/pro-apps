@@ -1,0 +1,39 @@
+{
+  "proAppsApp": {
+    "moM": {
+      "home": {
+        "title": "MoMS",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Mo M",
+        "createOrEditLabel": "Créer ou éditer un Mo M",
+        "notFound": "Aucun Mo M trouvé"
+      },
+      "created": "Un nouveau Mo M a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Mo M avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Mo M avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Mo M {{ id }} ?"
+      },
+      "detail": {
+        "title": "Mo M"
+      },
+      "id": "ID",
+      "title": "Title",
+      "meetingDate": "Meeting Date",
+      "minutesWritingDate": "Minutes Writing Date",
+      "meetingObjectif": "Meeting Objectif",
+      "meetingDocReferences": "Meeting Doc References",
+      "isMoMActionsClosed": "Is Mo M Actions Closed",
+      "subjectDecisions": "Subject Decisions",
+      "meetingPhotoCapture": "Meeting Photo Capture",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "attendees": "Attendees",
+      "notes": "Notes",
+      "tasks": "Tasks",
+      "projet": "Projet"
+    }
+  }
+}

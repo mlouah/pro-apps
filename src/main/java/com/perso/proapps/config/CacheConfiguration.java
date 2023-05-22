@@ -48,6 +48,29 @@ public class CacheConfiguration {
             createCache(cm, com.perso.proapps.domain.User.class.getName());
             createCache(cm, com.perso.proapps.domain.Authority.class.getName());
             createCache(cm, com.perso.proapps.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.perso.proapps.domain.MoM.class.getName());
+            createCache(cm, com.perso.proapps.domain.MoM.class.getName() + ".tasks");
+            createCache(cm, com.perso.proapps.domain.Task.class.getName());
+            createCache(cm, com.perso.proapps.domain.Person.class.getName());
+            createCache(cm, com.perso.proapps.domain.Person.class.getName() + ".tasks");
+            createCache(cm, com.perso.proapps.domain.Person.class.getName() + ".projects");
+            createCache(cm, com.perso.proapps.domain.Client.class.getName());
+            createCache(cm, com.perso.proapps.domain.Client.class.getName() + ".projects");
+            createCache(cm, com.perso.proapps.domain.Project.class.getName());
+            createCache(cm, com.perso.proapps.domain.Project.class.getName() + ".moMTitles");
+            createCache(cm, com.perso.proapps.domain.Project.class.getName() + ".tasks");
+            createCache(cm, com.perso.proapps.domain.Project.class.getName() + ".projectStatuses");
+            createCache(cm, com.perso.proapps.domain.TaskStatus.class.getName());
+            createCache(cm, com.perso.proapps.domain.TaskStatus.class.getName() + ".tasks");
+            createCache(cm, com.perso.proapps.domain.Company.class.getName());
+            createCache(cm, com.perso.proapps.domain.Company.class.getName() + ".projects");
+            createCache(cm, com.perso.proapps.domain.ProjectStatus.class.getName());
+            createCache(cm, com.perso.proapps.domain.ProjectStatusCode.class.getName());
+            createCache(cm, com.perso.proapps.domain.ProjectStatusCode.class.getName() + ".projectStatuses");
+            createCache(cm, com.perso.proapps.domain.ProjectPriority.class.getName());
+            createCache(cm, com.perso.proapps.domain.ProjectPriority.class.getName() + ".projects");
+            createCache(cm, com.perso.proapps.domain.ProjectCategory.class.getName());
+            createCache(cm, com.perso.proapps.domain.ProjectCategory.class.getName() + ".projects");
             // jhipster-needle-ehcache-add-entry
         };
     }

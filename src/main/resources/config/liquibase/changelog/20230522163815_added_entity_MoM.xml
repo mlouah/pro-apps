@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity MoM.
+    -->
+    <changeSet id="20230522163815-1" author="jhipster">
+        <createTable tableName="mo_m">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="meeting_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="minutes_writing_date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="meeting_objectif" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="meeting_doc_references" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="is_mo_m_actions_closed" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="subject_decisions" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="meeting_photo_capture" type="${blobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="meeting_photo_capture_content_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_creation" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="date_modify" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_modify_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="attendees" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="notes" type="${clobType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="projet_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="mo_m" columnName="date_creation" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="mo_m" columnName="date_modify" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20230522163815-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/mo_m.csv"
+                  separator=";"
+                  tableName="mo_m"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="title" type="string"/>
+            <column name="meeting_date" type="date"/>
+            <column name="minutes_writing_date" type="date"/>
+            <column name="meeting_objectif" type="clob"/>
+            <column name="meeting_doc_references" type="clob"/>
+            <column name="is_mo_m_actions_closed" type="boolean"/>
+            <column name="subject_decisions" type="clob"/>
+            <column name="meeting_photo_capture" type="blob"/>
+            <column name="meeting_photo_capture_content_type" type="string"/>
+            <column name="date_creation" type="date"/>
+            <column name="date_modify" type="date"/>
+            <column name="last_modify_by" type="string"/>
+            <column name="created_by" type="string"/>
+            <column name="attendees" type="clob"/>
+            <column name="notes" type="clob"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

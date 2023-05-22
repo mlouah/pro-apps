@@ -1,0 +1,197 @@
+//v2 - 22/05/2023
+
+entity MoM {
+	title String required
+    meetingDate LocalDate
+    MinutesWritingDate LocalDate
+    meetingObjectif TextBlob
+    meetingDocReferences TextBlob
+    isMoMActionsClosed Boolean
+    SubjectDecisions TextBlob
+    
+    //meetingRequester String
+    meetingPhotoCapture ImageBlob
+    // audit 
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+	attendees TextBlob
+    notes TextBlob
+	
+}
+
+entity Task
+{
+    subject String
+    taskTitle String required
+    dealLine LocalDate
+ 	isUrgent Boolean
+    // audit 
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes TextBlob
+}
+
+entity Person {
+	name String required
+    code String
+    isExternal Boolean
+     // audit 
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes TextBlob
+}
+
+
+entity Client
+{
+	name String required
+    code String required
+    //mainContactName String
+    //mainContactEmail String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    // currentCardHolderNumber Integer 
+    // currentBruncheNumber Integer 
+    // currentCustomersNumber Integer
+    // mainContactPhoneNumber  String
+    ClientLogo ImageBlob 
+	url String
+    // audit 
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes TextBlob
+}
+entity Project
+{
+    name String required
+    code String required
+    startDate LocalDate
+    realEndtDate LocalDate 
+    projectDescription TextBlob
+    initialEndDate LocalDate
+    initialCost Double 
+	initialWorkLoad Integer
+    // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes TextBlob
+}
+
+entity TaskStatus
+{
+    code String required
+    status String
+     
+    // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+
+entity Company
+{
+    name String required 
+    code String required
+    companyProfile TextBlob 
+    url    String 
+    logo ImageBlob
+    // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+entity ProjectStatus
+{
+    statusDate LocalDate
+    statusTitle String
+    // max_value 100
+    updatedProgress Double min(0) max(100)
+    
+    updatedWorkloadEAC Integer
+    updatedEndDate LocalDate
+    updatedCost Double
+     // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+entity ProjectStatusCode {
+	code String required
+    status String
+      // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    notes String
+}
+entity ProjectPriority
+{
+    code String required
+    priority String
+      // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    notes String
+}
+
+
+entity ProjectCategory
+{
+    code String required
+    category String
+      // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+relationship OneToMany {
+   ProjectPriority  to Project {ProjectPriority(code)}
+   ProjectCategory  to Project {ProjectCategory(code)}
+   TaskStatus{Task(taskTitle)} to Task{TaskStatus(code)}
+   
+   MoM{tasks(title)} to Task{TaskMoM(title)}
+   Project{MoMTitle(title)} to MoM{projet(code)}
+   Project{tasks(title)} to Task{ProjectName(code)}
+   Project to ProjectStatus{ProjectName(code)}
+   ProjectStatusCode to ProjectStatus{ProjectStatusCode(code)}
+   Client to Project{ClientCode(code)}
+   // user and persons
+   Person{Task(taskTitle)} to Task{TaskOwner(name)}
+   Person to Project{InternalProjectManager(name)}
+      
+   Company to Project {Company(code)}
+   
+}
+
+service all with serviceClass 

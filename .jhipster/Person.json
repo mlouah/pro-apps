@@ -1,0 +1,64 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182312",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "person",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isExternal",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Person",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "taskTitle",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "taskOwner",
+      "relationshipName": "task",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "internalProjectManager",
+      "relationshipName": "project",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

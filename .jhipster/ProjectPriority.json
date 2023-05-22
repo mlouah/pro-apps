@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182319",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project_priority",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "priority",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProjectPriority",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "projectPriority",
+      "relationshipName": "project",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

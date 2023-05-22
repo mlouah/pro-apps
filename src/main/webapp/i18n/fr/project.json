@@ -1,0 +1,44 @@
+{
+  "proAppsApp": {
+    "project": {
+      "home": {
+        "title": "Projects",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project",
+        "createOrEditLabel": "Créer ou éditer un Project",
+        "notFound": "Aucun Project trouvé"
+      },
+      "created": "Un nouveau Project a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project"
+      },
+      "id": "ID",
+      "name": "Name",
+      "code": "Code",
+      "startDate": "Start Date",
+      "realEndtDate": "Real Endt Date",
+      "projectDescription": "Project Description",
+      "initialEndDate": "Initial End Date",
+      "initialCost": "Initial Cost",
+      "initialWorkLoad": "Initial Work Load",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "moMTitle": "Mo M Title",
+      "tasks": "Tasks",
+      "projectStatus": "Project Status",
+      "projectPriority": "Project Priority",
+      "projectCategory": "Project Category",
+      "clientCode": "Client Code",
+      "internalProjectManager": "Internal Project Manager",
+      "company": "Company"
+    }
+  }
+}

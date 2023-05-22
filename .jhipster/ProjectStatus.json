@@ -1,0 +1,78 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182317",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project_status",
+  "fields": [
+    {
+      "fieldName": "statusDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "statusTitle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "updatedProgress",
+      "fieldType": "Double",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "updatedWorkloadEAC",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "updatedEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "updatedCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProjectStatus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "projectStatus",
+      "relationshipName": "projectName",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "projectStatusCode",
+      "otherEntityRelationshipName": "projectStatus",
+      "relationshipName": "projectStatusCode",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

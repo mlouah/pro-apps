@@ -1,0 +1,94 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182310",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "mo_m",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "meetingDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "minutesWritingDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "meetingObjectif",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "meetingDocReferences",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "isMoMActionsClosed",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "subjectDecisions",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "meetingPhotoCapture",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "attendees",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "MoM",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "taskMoM",
+      "relationshipName": "tasks",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "moMTitle",
+      "relationshipName": "projet",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182318",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project_status_code",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProjectStatusCode",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "projectStatus",
+      "otherEntityRelationshipName": "projectStatusCode",
+      "relationshipName": "projectStatus",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

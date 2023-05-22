@@ -1,1 +1,0 @@
-org.springframework.test.context.ContextCustomizerFactory = com.perso.proapps.config.TestContainersSpringContextCustomizerFactory

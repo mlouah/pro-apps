@@ -1,0 +1,31 @@
+{
+  "proAppsApp": {
+    "projectCategory": {
+      "home": {
+        "title": "ProjectCategories",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Project Category",
+        "createOrEditLabel": "Créer ou éditer un Project Category",
+        "notFound": "Aucun Project Category trouvé"
+      },
+      "created": "Un nouveau Project Category a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Project Category avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Project Category avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Project Category {{ id }} ?"
+      },
+      "detail": {
+        "title": "Project Category"
+      },
+      "id": "ID",
+      "code": "Code",
+      "category": "Category",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "project": "Project"
+    }
+  }
+}

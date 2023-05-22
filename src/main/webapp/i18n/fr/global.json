@@ -7,6 +7,17 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entités",
+        "moM": "Mo M",
+        "task": "Task",
+        "person": "Person",
+        "client": "Client",
+        "project": "Project",
+        "taskStatus": "Task Status",
+        "company": "Company",
+        "projectStatus": "Project Status",
+        "projectStatusCode": "Project Status Code",
+        "projectPriority": "Project Priority",
+        "projectCategory": "Project Category",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

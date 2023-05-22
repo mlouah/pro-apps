@@ -1,0 +1,31 @@
+{
+  "proAppsApp": {
+    "taskStatus": {
+      "home": {
+        "title": "Task Statuses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Status",
+        "createOrEditLabel": "Create or edit a Task Status",
+        "notFound": "No Task Statuses found"
+      },
+      "created": "A new Task Status is created with identifier {{ param }}",
+      "updated": "A Task Status is updated with identifier {{ param }}",
+      "deleted": "A Task Status is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Status {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Status"
+      },
+      "id": "ID",
+      "code": "Code",
+      "status": "Status",
+      "dateCreation": "Date Creation",
+      "dateModify": "Date Modify",
+      "lastModifyBy": "Last Modify By",
+      "createdBy": "Created By",
+      "notes": "Notes",
+      "task": "Task"
+    }
+  }
+}

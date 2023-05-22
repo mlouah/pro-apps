@@ -1,0 +1,52 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182320",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project_category",
+  "fields": [
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "category",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProjectCategory",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "project",
+      "otherEntityRelationshipName": "projectCategory",
+      "relationshipName": "project",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceClass"
+}

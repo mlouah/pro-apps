@@ -1,0 +1,128 @@
+{
+  "applications": "*",
+  "changelogDate": "20230522182314",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "project",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "realEndtDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "projectDescription",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "initialEndDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "initialCost",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "initialWorkLoad",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateCreation",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateModify",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifyBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Project",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "moM",
+      "otherEntityRelationshipName": "projet",
+      "relationshipName": "moMTitle",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "task",
+      "otherEntityRelationshipName": "projectName",
+      "relationshipName": "tasks",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "projectStatus",
+      "otherEntityRelationshipName": "projectName",
+      "relationshipName": "projectStatus",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "projectPriority",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "projectPriority",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "projectCategory",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "projectCategory",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "clientCode",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "person",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "internalProjectManager",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "company",
+      "otherEntityRelationshipName": "project",
+      "relationshipName": "company",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
