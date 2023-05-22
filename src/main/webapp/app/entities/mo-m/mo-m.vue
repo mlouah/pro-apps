@@ -30,14 +30,14 @@
             <th scope="row"><span v-text="$t('proAppsApp.moM.deadLine')">Dead Line</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.meetingObjectif')">Meeting Objectif</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.meetingDocReferences')">Meeting Doc References</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">Is Mo M Actions Closed</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">Actions Closed</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.decisions')">Decisions</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.attendees')">Attendees</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.moM.dateCreation')">Date Creation</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.moM.dateModify')">Date Modify</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.dateCreation')">Creation date</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.dateModify')">LAstModify on</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.createdBy')">Created By</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.moM.meetingPhotoCapture')">Meeting Photo Capture</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.meetingPhotoCapture')">Photo Capture</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.notes')">Notes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.projet')">Projet</span></th>
             <th scope="row"></th>
@@ -54,7 +54,9 @@
             <td>{{ moM.deadLine }}</td>
             <td>{{ moM.meetingObjectif }}</td>
             <td>{{ moM.meetingDocReferences }}</td>
-            <td>{{ moM.isMoMActionsClosed }}</td>
+            <td>
+              <span v-if="moM.isMoMActionsClosed"> <font-awesome-icon icon="flag"></font-awesome-icon> OK </span>
+            </td>
             <td>{{ moM.decisions }}</td>
             <td>{{ moM.attendees }}</td>
             <td>{{ moM.dateCreation ? $d(Date.parse(moM.dateCreation), 'short') : '' }}</td>

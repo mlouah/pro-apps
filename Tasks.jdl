@@ -1,80 +1,182 @@
-//v1 - 18/05/2023
+//v2 - 22/05/2023
 
 entity MoM {
 	title String required
     meetingDate LocalDate
-    docWritingDate LocalDate
-    deadLine LocalDate
+    MinutesWritingDate LocalDate
     meetingObjectif TextBlob
     meetingDocReferences TextBlob
     isMoMActionsClosed Boolean
-    decisions TextBlob
-    attendees TextBlob
+    SubjectDecisions TextBlob
+    
     //meetingRequester String
+    meetingPhotoCapture ImageBlob
+    // audit 
   	dateCreation Instant
     dateModify Instant
 	lastModifyBy String
 	createdBy String
-    meetingPhotoCapture ImageBlob
+	attendees TextBlob
     notes TextBlob
+	
 }
 
 entity Task
 {
     subject String
-    title String required
+    taskTitle String required
     dealLine LocalDate
-    dateCreation Instant
+ 	isUrgent Boolean
+    // audit 
+  	dateCreation Instant
     dateModify Instant
 	lastModifyBy String
 	createdBy String
+    
     notes TextBlob
 }
 
 entity Person {
-	name String required 
 	code String
     isExternal Boolean
     notes TextBlob
 }
 
+
+entity Client
+{
+	ClientLogo ImageBlob 
+    name String required
+    code String required
+    mainContactName String
+    mainContactEmail String pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/) 
+    // currentCardHolderNumber Integer 
+    // currentBruncheNumber Integer 
+    // currentCustomersNumber Integer
+    // mainContactPhoneNumber  String
+    url String
+    // audit 
+  	dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes TextBlob
+}
 entity Project
 {
     name String required
-    code String 
-    notes String
+    code String required
+    startDate LocalDate
+    realEndtDate LocalDate 
+    projectDescription String
     isInternal Boolean
-    // ---
+    initialEndDate LocalDate
+    initialCost Long
+    // audit
     dateCreation Instant
     dateModify Instant
 	lastModifyBy String
 	createdBy String
+    
     notes TextBlob
 }
 
 entity TaskStatus
 {
+    stautsDate LocalDate 
     code String required
     status String
-    statusPicto  ImageBlob
+    updatedProgress Long
+    updatedWorkloadEAC Long
+    updatedEndDateEAC LocalDate
+    
+    // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
     notes String
 }
 
-entity TaskPriority
+
+entity Company
+{
+    name String required 
+    code String required
+    companyProfile Longtext 
+    url    String 
+    // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+entity ProjectStatus
+{
+    code String required
+    status String
+    progress Long
+     // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+entity ProjectPriority
 {
     code String required
     priority String
-    taskPriorityPicto ImageBlob
+      // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
     notes String
 }
 
+
+entity ProjectCategory
+{
+    code String required
+    category String
+      // audit
+    dateCreation Instant
+    dateModify Instant
+	lastModifyBy String
+	createdBy String
+    
+    notes String
+}
+
+
+relationship OneToOne {
+	Person{User(login)} to User
+}
 relationship OneToMany {
-   TaskPriority{Task(title)} to Task{TaskPriority(priority)}
-   TaskStatus{Task(title)} to Task{TaskStatus(status)}
-   Person{Task(title)} to Task{TaskOwner(name)}
+   //TaskPriority{Task(title)} to Task{TaskPriority(priority)}
+   ProjectPriority  to Project {ProjectPriority(code)}
+   ProjectCategory  to Project {ProjectCategory(code)}
+   TaskStatus{Task(taskTitle)} to Task{TaskStatus(code)}
+   
    MoM{tasks(title)} to Task{TaskMoM(title)}
-   Project{MoMTitle(title)} to MoM{projet(name)}
-   Project{tasks(title)} to Task{ProjectName(name)}
+   Project{MoMTitle(title)} to MoM{projet(code)}
+   Project{tasks(title)} to Task{ProjectName(code)}
+   Project to ProjectStatus{ProjectName(code)}
+   Client to Project{ClientCode(code)}
+   // user and persons
+   Person{Task(taskTitle)} to Task{TaskOwner(login)}
+   Person to Project{InternalProjectManager(login)}
+      
+   Company to Project {Company(code)}
+   
 }
 
 service all with serviceClass 
