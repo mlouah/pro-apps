@@ -83,10 +83,18 @@ export default class Task extends mixins(JhiDataUtils) {
 
   public isSameDay(dl) {
     const current = new Date();
-    const [year, month, day] = dl.split('-');
+    const d = new Date(dl);
+    const day = this.padTo2Digits(d.getDate());
+    const month = this.padTo2Digits(d.getMonth() + 1);
+    const year = d.getFullYear();
+
+    const dlstr = year + '-' + month + '-' + day;
     const currentMonth = this.padTo2Digits(current.getMonth() + 1);
     const currentDay = this.padTo2Digits(current.getDate());
-    //const curentDateStr = current.getFullYear() + "-" + currentMonth + " - " + currentDay;
+    const curentDateStr = current.getFullYear() + '-' + currentMonth + ' - ' + currentDay;
+    //return year == current.getFullYear() && month == currentMonth && day == currentDay;
+    //return curentDateStr.length + ";" +dlstr.length ;
+    //return day + " ;" + currentDay;
     return year == current.getFullYear() && month == currentMonth && day == currentDay;
   }
 

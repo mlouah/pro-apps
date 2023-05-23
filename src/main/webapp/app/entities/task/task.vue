@@ -53,7 +53,7 @@
             <td>{{ task.subject }}</td>
             <td>{{ task.taskTitle }}</td>
             <td>
-              <span class="text-danger">(*)</span>
+              <span v-if="isSameDay(task.dealLine)" class="text-danger">(*)</span>
               {{ task.dealLine }}
             </td>
 
