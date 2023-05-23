@@ -1,12 +1,15 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="TaskHeading">
-      <span v-text="$t('proAppsApp.task.home.title')" id="task-heading">Tasks</span>
+      <span>{{ tasks.length }}</span>
+      <span v-text="$t('proAppsApp.task.home.title')" id="task-heading"> Tasks </span>
+
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('proAppsApp.task.home.refreshListLabel')">Refresh List</span>
         </button>
+
         <router-link :to="{ name: 'TaskCreate' }" custom v-slot="{ navigate }">
           <button @click="navigate" id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-task">
             <font-awesome-icon icon="plus"></font-awesome-icon>
@@ -24,6 +27,7 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
+
             <th scope="row"><span v-text="$t('proAppsApp.task.subject')">Subject</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskTitle')">Task Title</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.dealLine')">Deal Line</span></th>
@@ -45,10 +49,18 @@
             <td>
               <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }">{{ task.id }}</router-link>
             </td>
+
             <td>{{ task.subject }}</td>
             <td>{{ task.taskTitle }}</td>
-            <td>{{ task.dealLine }}</td>
-            <td>{{ task.isUrgent }}</td>
+            <td>
+              <span class="text-danger">(*)</span>
+              {{ task.dealLine }}
+            </td>
+
+            <td>
+              <span v-if="task.isUrgent"> <font-awesome-icon icon="flag"></font-awesome-icon></span>
+            </td>
+
             <td>{{ task.dateCreation ? $d(Date.parse(task.dateCreation), 'short') : '' }}</td>
             <td>{{ task.dateModify ? $d(Date.parse(task.dateModify), 'short') : '' }}</td>
             <td>{{ task.lastModifyBy }}</td>

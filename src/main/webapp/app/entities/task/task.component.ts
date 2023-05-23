@@ -80,4 +80,35 @@ export default class Task extends mixins(JhiDataUtils) {
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
+
+  public isSameDay(dl) {
+    const current = new Date();
+    const [year, month, day] = dl.split('-');
+    const currentMonth = this.padTo2Digits(current.getMonth() + 1);
+    const currentDay = this.padTo2Digits(current.getDate());
+    //const curentDateStr = current.getFullYear() + "-" + currentMonth + " - " + currentDay;
+    return year == current.getFullYear() && month == currentMonth && day == currentDay;
+  }
+
+  // padTo2Digits
+  public padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+
+  public currentDateTime() {
+    console.log('*******************   currentDateTime ****************');
+    const current = new Date();
+    const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+    const time = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds();
+    const dateTime = date + ' ' + time;
+
+    return dateTime;
+  }
+
+  public currentDate() {
+    console.log('*******************   currentDate ****************');
+    const current = new Date();
+    const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
+    return date;
+  }
 }

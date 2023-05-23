@@ -2,7 +2,7 @@
   "proAppsApp": {
     "task": {
       "home": {
-        "title": "Tasks",
+        "title": "Task(s)",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Task",
         "createOrEditLabel": "Create or edit a Task",
