@@ -31,11 +31,14 @@
             <th scope="row"><span v-text="$t('proAppsApp.task.subject')">Subject</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskTitle')">Task Title</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.dealLine')">Deal Line</span></th>
+
             <th scope="row"><span v-text="$t('proAppsApp.task.isUrgent')">Is Urgent</span></th>
+            <!--
             <th scope="row"><span v-text="$t('proAppsApp.task.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.createdBy')">Created By</span></th>
+            -->
             <th scope="row"><span v-text="$t('proAppsApp.task.notes')">Notes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskStatus')">Task Status</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskMoM')">Task Mo M</span></th>
@@ -60,11 +63,12 @@
             <td>
               <span v-if="task.isUrgent"> <font-awesome-icon icon="flag"></font-awesome-icon></span>
             </td>
-
+            <!--
             <td>{{ task.dateCreation ? $d(Date.parse(task.dateCreation), 'short') : '' }}</td>
             <td>{{ task.dateModify ? $d(Date.parse(task.dateModify), 'short') : '' }}</td>
             <td>{{ task.lastModifyBy }}</td>
             <td>{{ task.createdBy }}</td>
+-->
             <td>{{ task.notes }}</td>
             <td>
               <div v-if="task.taskStatus">

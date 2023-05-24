@@ -37,10 +37,12 @@
             <th scope="row"><span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialWorkLoad')">Initial Work Load</span></th>
+            <!--
             <th scope="row"><span v-text="$t('proAppsApp.project.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.createdBy')">Created By</span></th>
+            -->
             <th scope="row"><span v-text="$t('proAppsApp.project.notes')">Notes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectCategory')">Project Category</span></th>
@@ -59,15 +61,21 @@
             <td>{{ project.code }}</td>
             <td>{{ project.startDate }}</td>
             <td>{{ project.realEndtDate }}</td>
-            <td>{{ project.projectDescription }}</td>
+            <td>{{ getShortContent(project.projectDescription, 30) }}</td>
             <td>{{ project.initialEndDate }}</td>
-            <td>{{ project.initialCost }}</td>
+            <td>
+              <span
+                ><b> {{ formatPrice(project.initialCost, 2) }} </b> MAD</span
+              >
+            </td>
             <td>{{ project.initialWorkLoad }}</td>
+            <!--
             <td>{{ project.dateCreation ? $d(Date.parse(project.dateCreation), 'short') : '' }}</td>
             <td>{{ project.dateModify ? $d(Date.parse(project.dateModify), 'short') : '' }}</td>
             <td>{{ project.lastModifyBy }}</td>
             <td>{{ project.createdBy }}</td>
-            <td>{{ project.notes }}</td>
+            -->
+            <td>{{ getShortContent(project.notes, 30) }}</td>
             <td>
               <div v-if="project.projectPriority">
                 <router-link :to="{ name: 'ProjectPriorityView', params: { projectPriorityId: project.projectPriority.id } }">{{
