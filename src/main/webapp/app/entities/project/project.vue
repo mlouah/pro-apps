@@ -64,9 +64,9 @@
             <td>{{ getShortContent(project.projectDescription, 30) }}</td>
             <td>{{ project.initialEndDate }}</td>
             <td>
-              <span
-                ><b> {{ formatPrice(project.initialCost, 2) }} </b> MAD</span
-              >
+              <span>
+                <b> {{ formatPrice(project.initialCost, 2) }} </b> MAD
+              </span>
             </td>
             <td>{{ project.initialWorkLoad }}</td>
             <!--

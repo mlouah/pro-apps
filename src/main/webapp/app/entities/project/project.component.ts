@@ -88,6 +88,10 @@ export default class Project extends mixins(JhiDataUtils) {
   }
 
   public getShortContent(str, num) {
-    return str.substring(0, num) + ' ...';
+    if (typeof str === 'string') {
+      return str.substring(0, num) + ' ...';
+    }
+    return str;
   }
+  // end class
 }
