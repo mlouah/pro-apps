@@ -9,6 +9,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A Client.
@@ -17,6 +22,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "client")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@EntityListeners(AuditingEntityListener.class)
 public class Client implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,17 +50,24 @@ public class Client implements Serializable {
     @Column(name = "url")
     private String url;
 
+    // audit start
+    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
+    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
+    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
+    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
+
+    // audit end
 
     @Lob
     @Column(name = "notes")

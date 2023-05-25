@@ -9,6 +9,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A TaskStatus.
@@ -17,6 +22,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "task_status")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@EntityListeners(AuditingEntityListener.class)
 public class TaskStatus implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,17 +39,24 @@ public class TaskStatus implements Serializable {
     @Column(name = "status")
     private String status;
 
+    // audit start
+    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
+    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
+    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
+    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
+
+    // audit end
 
     @Column(name = "notes")
     private String notes;
