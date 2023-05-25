@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Bienvenue, Java Hipster !",
-    "subtitle": "Ceci est votre page d'accueil",
+    "title": "Bienvenue!",
+    "subtitle": "Ceci est page d'accueil du portail S2M DATA",
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },

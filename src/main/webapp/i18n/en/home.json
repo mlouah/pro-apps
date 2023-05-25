@@ -1,7 +1,7 @@
 {
   "home": {
-    "title": "Welcome, Java Hipster!",
-    "subtitle": "This is your homepage",
+    "title": "Welcome! ",
+    "subtitle": "This is S2M DATA Portal homepage",
     "logged": {
       "message": "You are logged in as user \"{{username}}\"."
     },

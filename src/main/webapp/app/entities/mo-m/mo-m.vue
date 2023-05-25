@@ -1,7 +1,8 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="MoMHeading">
-      <span v-text="$t('proAppsApp.moM.home.title')" id="mo-m-heading">Mo MS</span>
+      <span class="$blue-100">{{ moMS.length }}</span>
+      <span v-text="$t('proAppsApp.moM.home.title')" id="mo-m-heading">Minutes</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
@@ -32,10 +33,12 @@
             <th scope="row"><span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">Is Mo M Actions Closed</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.subjectDecisions')">Subject Decisions</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.meetingPhotoCapture')">Meeting Photo Capture</span></th>
+            <!--
             <th scope="row"><span v-text="$t('proAppsApp.moM.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.createdBy')">Created By</span></th>
+            -->
             <th scope="row"><span v-text="$t('proAppsApp.moM.attendees')">Attendees</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.notes')">Notes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.projet')">Projet</span></th>
@@ -47,12 +50,18 @@
             <td>
               <router-link :to="{ name: 'MoMView', params: { moMId: moM.id } }">{{ moM.id }}</router-link>
             </td>
-            <td>{{ moM.title }}</td>
+            <td>
+              <b>{{ moM.title }}</b>
+            </td>
             <td>{{ moM.meetingDate }}</td>
             <td>{{ moM.minutesWritingDate }}</td>
             <td>{{ moM.meetingObjectif }}</td>
             <td>{{ moM.meetingDocReferences }}</td>
-            <td>{{ moM.isMoMActionsClosed }}</td>
+
+            <td>
+              <div v-if="!moM.isMoMActionsClosed" div class="alert alert-warning">NOT YET!</div>
+              <div v-else="!moM.isMoMActionsClosed" div class="alert alert-success">YES</div>
+            </td>
             <td>{{ moM.subjectDecisions }}</td>
             <td>
               <a v-if="moM.meetingPhotoCapture" v-on:click="openFile(moM.meetingPhotoCaptureContentType, moM.meetingPhotoCapture)">
@@ -64,10 +73,12 @@
               </a>
               <span v-if="moM.meetingPhotoCapture">{{ moM.meetingPhotoCaptureContentType }}, {{ byteSize(moM.meetingPhotoCapture) }}</span>
             </td>
+            <!-- 
             <td>{{ moM.dateCreation ? $d(Date.parse(moM.dateCreation), 'short') : '' }}</td>
             <td>{{ moM.dateModify ? $d(Date.parse(moM.dateModify), 'short') : '' }}</td>
             <td>{{ moM.lastModifyBy }}</td>
             <td>{{ moM.createdBy }}</td>
+             -->
             <td>{{ moM.attendees }}</td>
             <td>{{ moM.notes }}</td>
             <td>

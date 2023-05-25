@@ -10,6 +10,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A MoM.
@@ -18,6 +23,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "mo_m")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@EntityListeners(AuditingEntityListener.class)
 public class MoM implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -59,15 +65,19 @@ public class MoM implements Serializable {
     @Column(name = "meeting_photo_capture_content_type")
     private String meetingPhotoCaptureContentType;
 
+    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
+    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
+    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
+    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 

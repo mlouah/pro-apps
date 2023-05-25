@@ -28,50 +28,22 @@
         </div>
       </div>
 
-      <p v-text="$t('home.question')">If you have any question on JHipster:</p>
-
       <ul>
         <li>
-          <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" v-text="$t('home.link.homepage')"
-            >JHipster homepage</a
-          >
+          <a href="https://s2mworldwide.com/" target="_blank">S2M</a>
         </li>
         <li>
-          <a
-            href="http://stackoverflow.com/tags/jhipster/info"
-            target="_blank"
-            rel="noopener noreferrer"
-            v-text="$t('home.link.stackoverflow')"
-            >JHipster on Stack Overflow</a
-          >
+          <a href="https://s2mgroupe.sharepoint.com/" target="_blank">S2M Share point</a>
         </li>
         <li>
-          <a
-            href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-            target="_blank"
-            rel="noopener noreferrer"
-            v-text="$t('home.link.bugtracker')"
-            >JHipster bug tracker</a
-          >
+          <a href="https://github.com/" target="_blank">Git Hub</a>
         </li>
         <li>
-          <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" v-text="$t('home.link.chat')"
-            >JHipster public chat room</a
-          >
-        </li>
-        <li>
-          <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" v-text="$t('home.link.follow')"
-            >follow @jhipster on Twitter</a
-          >
+          <a href="https://www.google.com/" target="_blank">Google search</a>
         </li>
       </ul>
 
-      <p>
-        <span v-text="$t('home.like')">If you like JHipster, don't forget to give us a star on</span>
-        <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" v-text="$t('home.github')"
-          >GitHub</a
-        >!
-      </p>
+      <p></p>
     </div>
   </div>
 </template>
