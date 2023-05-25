@@ -7,10 +7,10 @@
 
     <groupId>com.perso.proapps</groupId>
     <artifactId>pro-apps</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>Pro Apps</name>
-    <description>Description for ProApps</description>
+    <name>Professional  Apps</name>
+    <description>All apps you need to run a tech company </description>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->

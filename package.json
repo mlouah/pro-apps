@@ -1,8 +1,8 @@
 {
-  "name": "pro-apps",
-  "version": "0.0.0",
+  "name": "professional-apps",
+  "version": "1.0.0",
   "private": true,
-  "description": "Description for ProApps",
+  "description": "ProApps will include all application needed by an entreprise like S2M: PMO, DATA,...",
   "license": "UNLICENSED",
   "scripts": {
     "app:start": "./mvnw",
