@@ -59,8 +59,12 @@
             <td>{{ moM.meetingDocReferences }}</td>
 
             <td>
-              <div v-if="!moM.isMoMActionsClosed" div class="alert alert-warning">{{ getDayDiff(moM.dateCreation) }}</div>
-              <div v-else="!moM.isMoMActionsClosed" div class="alert alert-success">YES</div>
+              <div v-if="!moM.isMoMActionsClosed" div class="alert alert-warning">
+                <font-awesome-icon icon="bell"></font-awesome-icon>{{ getDayDiff(moM.meetingDate) }}
+              </div>
+              <div v-else="!moM.isMoMActionsClosed" div class="alert alert-success">
+                <font-awesome-icon icon="check"></font-awesome-icon>
+              </div>
             </td>
             <td>{{ getShortContent(moM.subjectDecisions, 30) }}</td>
             <td>
