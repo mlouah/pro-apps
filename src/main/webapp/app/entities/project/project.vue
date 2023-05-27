@@ -35,7 +35,7 @@
             <th scope="row"><span v-text="$t('proAppsApp.project.realEndtDate')">Real Endt Date</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectDescription')">Project Description</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost (MAD)</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialWorkLoad')">Initial Work Load</span></th>
             <!--
             <th scope="row"><span v-text="$t('proAppsApp.project.dateCreation')">Date Creation</span></th>
@@ -65,7 +65,7 @@
             <td>{{ project.initialEndDate }}</td>
             <td>
               <span>
-                <b> {{ formatPrice(project.initialCost, 2) }} </b> MAD
+                <b> {{ formatPrice(project.initialCost, 2) }} </b>
               </span>
             </td>
             <td>{{ project.initialWorkLoad }}</td>

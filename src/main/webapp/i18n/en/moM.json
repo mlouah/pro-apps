@@ -23,7 +23,7 @@
       "minutesWritingDate": "Minutes Writing Date",
       "meetingObjectif": "Meeting Objectif",
       "meetingDocReferences": "Meeting Doc References",
-      "isMoMActionsClosed": "Is MoM Actions Closed",
+      "isMoMActionsClosed": "Status/ since(days)",
       "subjectDecisions": "Subject Decisions",
       "meetingPhotoCapture": "Meeting Photo Capture",
       "dateCreation": "Date Creation",

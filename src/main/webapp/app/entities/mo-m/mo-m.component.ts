@@ -108,6 +108,6 @@ export default class MoM extends mixins(JhiDataUtils) {
     let endDate = new Date();
     const msInDay = 24 * 60 * 60 * 1000;
     // 👇️ explicitly calling getTime()
-    return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInDay) + ' days';
+    return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInDay);
   }
 }

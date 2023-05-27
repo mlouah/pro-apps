@@ -24,7 +24,7 @@
       "realEndtDate": "Real End Date",
       "projectDescription": "Project Description",
       "initialEndDate": "Initial End Date",
-      "initialCost": "Initial Cost",
+      "initialCost": "Initial Cost(MAD)",
       "initialWorkLoad": "Initial Work Load",
       "dateCreation": "Date Creation",
       "dateModify": "Date Modify",
