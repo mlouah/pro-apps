@@ -55,14 +55,14 @@
             </td>
             <td>{{ moM.meetingDate }}</td>
             <td>{{ moM.minutesWritingDate }}</td>
-            <td>{{ moM.meetingObjectif }}</td>
+            <td>{{ getShortContent(moM.meetingObjectif, 30) }}</td>
             <td>{{ moM.meetingDocReferences }}</td>
 
             <td>
-              <div v-if="!moM.isMoMActionsClosed" div class="alert alert-warning">NOT YET!</div>
+              <div v-if="!moM.isMoMActionsClosed" div class="alert alert-warning">{{ getDayDiff(moM.dateCreation) }}</div>
               <div v-else="!moM.isMoMActionsClosed" div class="alert alert-success">YES</div>
             </td>
-            <td>{{ moM.subjectDecisions }}</td>
+            <td>{{ getShortContent(moM.subjectDecisions, 30) }}</td>
             <td>
               <a v-if="moM.meetingPhotoCapture" v-on:click="openFile(moM.meetingPhotoCaptureContentType, moM.meetingPhotoCapture)">
                 <img
@@ -79,8 +79,9 @@
             <td>{{ moM.lastModifyBy }}</td>
             <td>{{ moM.createdBy }}</td>
              -->
-            <td>{{ moM.attendees }}</td>
-            <td>{{ moM.notes }}</td>
+            <td>{{ getShortContent(moM.attendees, 30) }}</td>
+            <td>{{ getShortContent(moM.notes, 30) }}</td>
+
             <td>
               <div v-if="moM.projet">
                 <router-link :to="{ name: 'ProjectView', params: { projectId: moM.projet.id } }">{{ moM.projet.code }}</router-link>

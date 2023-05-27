@@ -97,7 +97,7 @@
             <span v-text="$t('proAppsApp.moM.notes')">Notes</span>
           </dt>
           <dd>
-            <span>{{ moM.notes }}</span>
+            <span v-html="moM.notes"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.moM.projet')">Projet</span>

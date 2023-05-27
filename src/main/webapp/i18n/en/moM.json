@@ -2,20 +2,20 @@
   "proAppsApp": {
     "moM": {
       "home": {
-        "title": "Mo MS",
+        "title": "Minutes of Meetings ",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Mo M",
-        "createOrEditLabel": "Create or edit a Mo M",
-        "notFound": "No Mo MS found"
+        "createLabel": "Create a new MoM",
+        "createOrEditLabel": "Create or edit a MoM",
+        "notFound": "No MoMS found"
       },
-      "created": "A new Mo M is created with identifier {{ param }}",
-      "updated": "A Mo M is updated with identifier {{ param }}",
-      "deleted": "A Mo M is deleted with identifier {{ param }}",
+      "created": "A new MoM is created with identifier {{ param }}",
+      "updated": "A MoM is updated with identifier {{ param }}",
+      "deleted": "A MoM is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Mo M {{ id }}?"
+        "question": "Are you sure you want to delete MoM {{ id }}?"
       },
       "detail": {
-        "title": "Mo M"
+        "title": "MoM"
       },
       "id": "ID",
       "title": "Title",
@@ -23,7 +23,7 @@
       "minutesWritingDate": "Minutes Writing Date",
       "meetingObjectif": "Meeting Objectif",
       "meetingDocReferences": "Meeting Doc References",
-      "isMoMActionsClosed": "Is Mo M Actions Closed",
+      "isMoMActionsClosed": "Is MoM Actions Closed",
       "subjectDecisions": "Subject Decisions",
       "meetingPhotoCapture": "Meeting Photo Capture",
       "dateCreation": "Date Creation",

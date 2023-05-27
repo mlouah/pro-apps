@@ -21,7 +21,7 @@
       "name": "Name",
       "code": "Code",
       "startDate": "Start Date",
-      "realEndtDate": "Real Endt Date",
+      "realEndtDate": " Date fin réelle",
       "projectDescription": "Project Description",
       "initialEndDate": "Initial End Date",
       "initialCost": "Initial Cost",

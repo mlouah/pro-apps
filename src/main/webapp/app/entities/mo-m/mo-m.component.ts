@@ -80,4 +80,42 @@ export default class MoM extends mixins(JhiDataUtils) {
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
+
+  // todo: factorisation
+  public getShortContent(str, num) {
+    if (typeof str === 'string') {
+      return str.substring(0, num) + ' ...';
+    }
+    return str;
+  }
+
+  public x() {
+    const date1: Date = new Date('10/06/2021 10:10:05');
+    const date2: Date = new Date('10/06/2021 11:11:05');
+    const msBetweenDates = date2.getTime() - date1.getTime();
+
+    return this.convertMsToTime(msBetweenDates);
+  }
+
+  public padTo2Digits(num: number) {
+    return num.toString().padStart(2, '0');
+  }
+
+  public convertMsToTime(milliseconds: number) {
+    let seconds = Math.floor(milliseconds / 1000);
+    let minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+
+    return `${this.padTo2Digits(hours)}h:${this.padTo2Digits(minutes)}m:${this.padTo2Digits(seconds)}`;
+  }
+
+  public getDayDiff(datecreation) {
+    let startDate = new Date(datecreation);
+    let endDate = new Date();
+    const msInDay = 24 * 60 * 60 * 1000;
+    // 👇️ explicitly calling getTime()
+    return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInDay) + ' days';
+  }
 }
