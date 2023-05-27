@@ -89,14 +89,6 @@ export default class MoM extends mixins(JhiDataUtils) {
     return str;
   }
 
-  public x() {
-    const date1: Date = new Date('10/06/2021 10:10:05');
-    const date2: Date = new Date('10/06/2021 11:11:05');
-    const msBetweenDates = date2.getTime() - date1.getTime();
-
-    return this.convertMsToTime(msBetweenDates);
-  }
-
   public padTo2Digits(num: number) {
     return num.toString().padStart(2, '0');
   }
