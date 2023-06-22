@@ -69,7 +69,8 @@
             <td>{{ task.lastModifyBy }}</td>
             <td>{{ task.createdBy }}</td>
 -->
-            <td>{{ task.notes }}</td>
+            <td><span v-html="task.notes"></span></td>
+
             <td>
               <div v-if="task.taskStatus">
                 <router-link :to="{ name: 'TaskStatusView', params: { taskStatusId: task.taskStatus.id } }">{{

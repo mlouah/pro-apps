@@ -34,7 +34,7 @@
             <span v-text="$t('proAppsApp.project.projectDescription')">Project Description</span>
           </dt>
           <dd>
-            <span>{{ project.projectDescription }}</span>
+            <span v-html="project.projectDescription"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span>
@@ -82,7 +82,7 @@
             <span v-text="$t('proAppsApp.project.notes')">Notes</span>
           </dt>
           <dd>
-            <span>{{ project.notes }}</span>
+            <span v-html="project.notes"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span>

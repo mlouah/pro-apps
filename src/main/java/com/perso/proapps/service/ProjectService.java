@@ -117,6 +117,17 @@ public class ProjectService {
     }
 
     /**
+     * Get all the projects by company
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<Project> findAll(String company) {
+        log.debug("Request to get all Projects");
+        return projectRepository.findAll(company);
+    }
+
+    /**
      * Get all the projects with eager load of many-to-many relationships.
      *
      * @return the list of entities.

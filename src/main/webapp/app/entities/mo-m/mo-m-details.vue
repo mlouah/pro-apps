@@ -28,7 +28,7 @@
             <span v-text="$t('proAppsApp.moM.meetingObjectif')">Meeting Objectif</span>
           </dt>
           <dd>
-            <span>{{ moM.meetingObjectif }}</span>
+            <span v-html="moM.meetingObjectif"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.moM.meetingDocReferences')">Meeting Doc References</span>
@@ -46,7 +46,7 @@
             <span v-text="$t('proAppsApp.moM.subjectDecisions')">Subject Decisions</span>
           </dt>
           <dd>
-            <span>{{ moM.subjectDecisions }}</span>
+            <span v-html="moM.subjectDecisions"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.moM.meetingPhotoCapture')">Meeting Photo Capture</span>

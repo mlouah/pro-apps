@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ProjectHeading">
+      <span>{{ projects.length }}</span>
       <span v-text="$t('proAppsApp.project.home.title')" id="project-heading">Projects</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">

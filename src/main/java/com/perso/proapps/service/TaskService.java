@@ -102,7 +102,6 @@ public class TaskService {
     @Transactional(readOnly = true)
     public List<Task> findAll() {
         log.debug("Request to get all Tasks");
-
         return taskRepository.findAll();
     }
 
