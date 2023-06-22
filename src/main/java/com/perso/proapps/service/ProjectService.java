@@ -124,7 +124,8 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public List<Project> findAll(String company) {
         log.debug("Request to get all Projects");
-        return projectRepository.findAll(company);
+        // to be done
+        return projectRepository.findAll();
     }
 
     /**
