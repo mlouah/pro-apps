@@ -146,6 +146,7 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Optional<Project> findOne(Long id) {
         log.debug("Request to get Project : {}", id);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         return projectRepository.findOneWithEagerRelationships(id);
     }
 
