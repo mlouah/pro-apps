@@ -58,7 +58,7 @@
             <span v-text="$t('proAppsApp.task.notes')">Notes</span>
           </dt>
           <dd>
-            <span>{{ task.notes }}</span>
+            <span v-html="task.notes"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.task.taskStatus')">Task Status</span>

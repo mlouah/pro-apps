@@ -34,7 +34,7 @@
             <span v-text="$t('proAppsApp.moM.meetingDocReferences')">Meeting Doc References</span>
           </dt>
           <dd>
-            <span>{{ moM.meetingDocReferences }}</span>
+            <span v-html="moM.meetingDocReferences"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">Is Mo M Actions Closed</span>
@@ -91,7 +91,7 @@
             <span v-text="$t('proAppsApp.moM.attendees')">Attendees</span>
           </dt>
           <dd>
-            <span>{{ moM.attendees }}</span>
+            <span v-html="moM.attendees"></span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.moM.notes')">Notes</span>
