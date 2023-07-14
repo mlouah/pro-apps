@@ -85,24 +85,6 @@
             <span>{{ project.notes }}</span>
           </dd>
           <dt>
-            <span v-text="$t('proAppsApp.project.objectives')">Objectives</span>
-          </dt>
-          <dd>
-            <span>{{ project.objectives }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('proAppsApp.project.todo')">Todo</span>
-          </dt>
-          <dd>
-            <span>{{ project.todo }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('proAppsApp.project.progress')">Progress</span>
-          </dt>
-          <dd>
-            <span>{{ project.progress }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span>
           </dt>
           <dd>
@@ -151,12 +133,12 @@
             </div>
           </dd>
           <dt>
-            <span v-text="$t('proAppsApp.project.projectStatus')">Project Status</span>
+            <span v-text="$t('proAppsApp.project.projectStatusCode')">Project Status Code</span>
           </dt>
           <dd>
-            <div v-if="project.projectStatus">
-              <router-link :to="{ name: 'TaskStatusView', params: { taskStatusId: project.projectStatus.id } }">{{
-                project.projectStatus.code
+            <div v-if="project.projectStatusCode">
+              <router-link :to="{ name: 'ProjectStatusCodeView', params: { projectStatusCodeId: project.projectStatusCode.id } }">{{
+                project.projectStatusCode.code
               }}</router-link>
             </div>
           </dd>

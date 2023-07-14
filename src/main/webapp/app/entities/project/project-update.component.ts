@@ -30,8 +30,8 @@ import { IPerson } from '@/shared/model/person.model';
 import CompanyService from '@/entities/company/company.service';
 import { ICompany } from '@/shared/model/company.model';
 
-import TaskStatusService from '@/entities/task-status/task-status.service';
-import { ITaskStatus } from '@/shared/model/task-status.model';
+import ProjectStatusCodeService from '@/entities/project-status-code/project-status-code.service';
+import { IProjectStatusCode } from '@/shared/model/project-status-code.model';
 
 import { IProject, Project } from '@/shared/model/project.model';
 import ProjectService from './project.service';
@@ -55,10 +55,7 @@ const validations: any = {
     lastModifyBy: {},
     createdBy: {},
     notes: {},
-    objectives: {},
-    todo: {},
-    progress: {},
-    projectStatus: {
+    projectStatusCode: {
       required,
     },
   },
@@ -101,9 +98,9 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
 
   public companies: ICompany[] = [];
 
-  @Inject('taskStatusService') private taskStatusService: () => TaskStatusService;
+  @Inject('projectStatusCodeService') private projectStatusCodeService: () => ProjectStatusCodeService;
 
-  public taskStatuses: ITaskStatus[] = [];
+  public projectStatusCodes: IProjectStatusCode[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -245,10 +242,10 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
       .then(res => {
         this.companies = res.data;
       });
-    this.taskStatusService()
+    this.projectStatusCodeService()
       .retrieve()
       .then(res => {
-        this.taskStatuses = res.data;
+        this.projectStatusCodes = res.data;
       });
   }
 }

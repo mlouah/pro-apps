@@ -1,15 +1,12 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ProjectHeading">
-      <span>{{ projects.length }}</span>
-
       <span v-text="$t('proAppsApp.project.home.title')" id="project-heading">Projects</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('proAppsApp.project.home.refreshListLabel')">Refresh List</span>
         </button>
-
         <router-link :to="{ name: 'ProjectCreate' }" custom v-slot="{ navigate }">
           <button
             @click="navigate"
@@ -36,25 +33,21 @@
             <th scope="row"><span v-text="$t('proAppsApp.project.code')">Code</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.startDate')">Start Date</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.realEndtDate')">Real Endt Date</span></th>
-            <!-- 
             <th scope="row"><span v-text="$t('proAppsApp.project.projectDescription')">Project Description</span></th>
-           -->
             <th scope="row"><span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost (MAD)</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialWorkLoad')">Initial Work Load</span></th>
-            <!--
             <th scope="row"><span v-text="$t('proAppsApp.project.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.createdBy')">Created By</span></th>
-            
             <th scope="row"><span v-text="$t('proAppsApp.project.notes')">Notes</span></th>
-            -->
             <th scope="row"><span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectCategory')">Project Category</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.clientCode')">Client Code</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.internalProjectManager')">Internal Project Manager</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.company')">Company</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.projectStatusCode')">Project Status Code</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -62,28 +55,20 @@
           <tr v-for="project in projects" :key="project.id" data-cy="entityTable">
             <td>
               <router-link :to="{ name: 'ProjectView', params: { projectId: project.id } }">{{ project.id }}</router-link>
-              {{ project.clientCode.name }}
             </td>
             <td>{{ project.name }}</td>
             <td>{{ project.code }}</td>
             <td>{{ project.startDate }}</td>
             <td>{{ project.realEndtDate }}</td>
-            <!--  <td>{{ getShortContent(project.projectDescription, 30) }}</td>  -->
+            <td>{{ project.projectDescription }}</td>
             <td>{{ project.initialEndDate }}</td>
-            <td>
-              <span>
-                <b> {{ formatPrice(project.initialCost, 2) }} </b>
-              </span>
-            </td>
+            <td>{{ project.initialCost }}</td>
             <td>{{ project.initialWorkLoad }}</td>
-            <!--
             <td>{{ project.dateCreation ? $d(Date.parse(project.dateCreation), 'short') : '' }}</td>
             <td>{{ project.dateModify ? $d(Date.parse(project.dateModify), 'short') : '' }}</td>
             <td>{{ project.lastModifyBy }}</td>
             <td>{{ project.createdBy }}</td>
-           
-            <td>{{ getShortContent(project.notes, 30) }}</td>
-             -->
+            <td>{{ project.notes }}</td>
             <td>
               <div v-if="project.projectPriority">
                 <router-link :to="{ name: 'ProjectPriorityView', params: { projectPriorityId: project.projectPriority.id } }">{{
@@ -119,15 +104,20 @@
                 }}</router-link>
               </div>
             </td>
+            <td>
+              <div v-if="project.projectStatusCode">
+                <router-link :to="{ name: 'ProjectStatusCodeView', params: { projectStatusCodeId: project.projectStatusCode.id } }">{{
+                  project.projectStatusCode.code
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'ProjectView', params: { projectId: project.id } }" custom v-slot="{ navigate }">
-                  <!--
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
-                  -->
                 </router-link>
                 <router-link :to="{ name: 'ProjectEdit', params: { projectId: project.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">

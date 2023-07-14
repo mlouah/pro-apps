@@ -10,11 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A Project.
@@ -23,7 +18,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "project")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@EntityListeners(AuditingEntityListener.class)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -60,36 +54,21 @@ public class Project implements Serializable {
     @Column(name = "initial_work_load")
     private Integer initialWorkLoad;
 
-    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
-    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
-    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
-    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 
     @Lob
     @Column(name = "notes")
     private String notes;
-
-    @Lob
-    @Column(name = "objectives")
-    private String objectives;
-
-    @Lob
-    @Column(name = "todo")
-    private String todo;
-
-    @Column(name = "progress")
-    private Float progress;
 
     @OneToMany(mappedBy = "projet")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -100,11 +79,6 @@ public class Project implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "taskStatus", "taskMoM", "projectName", "taskOwner" }, allowSetters = true)
     private Set<Task> tasks = new HashSet<>();
-
-    @OneToMany(mappedBy = "projectName")
-    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-    @JsonIgnoreProperties(value = { "projectName", "projectStatusCode" }, allowSetters = true)
-    private Set<ProjectStatus> projectStatuses = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "projects" }, allowSetters = true)
@@ -125,6 +99,11 @@ public class Project implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties(value = { "projects" }, allowSetters = true)
     private Company company;
+
+    @ManyToOne(optional = false)
+    @NotNull
+    @JsonIgnoreProperties(value = { "projectStatuses" }, allowSetters = true)
+    private ProjectStatusCode projectStatusCode;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -310,45 +289,6 @@ public class Project implements Serializable {
         this.notes = notes;
     }
 
-    public String getObjectives() {
-        return this.objectives;
-    }
-
-    public Project objectives(String objectives) {
-        this.setObjectives(objectives);
-        return this;
-    }
-
-    public void setObjectives(String objectives) {
-        this.objectives = objectives;
-    }
-
-    public String getTodo() {
-        return this.todo;
-    }
-
-    public Project todo(String todo) {
-        this.setTodo(todo);
-        return this;
-    }
-
-    public void setTodo(String todo) {
-        this.todo = todo;
-    }
-
-    public Float getProgress() {
-        return this.progress;
-    }
-
-    public Project progress(Float progress) {
-        this.setProgress(progress);
-        return this;
-    }
-
-    public void setProgress(Float progress) {
-        this.progress = progress;
-    }
-
     public Set<MoM> getMoMTitles() {
         return this.moMTitles;
     }
@@ -408,37 +348,6 @@ public class Project implements Serializable {
     public Project removeTasks(Task task) {
         this.tasks.remove(task);
         task.setProjectName(null);
-        return this;
-    }
-
-    public Set<ProjectStatus> getProjectStatuses() {
-        return this.projectStatuses;
-    }
-
-    public void setProjectStatuses(Set<ProjectStatus> projectStatuses) {
-        if (this.projectStatuses != null) {
-            this.projectStatuses.forEach(i -> i.setProjectName(null));
-        }
-        if (projectStatuses != null) {
-            projectStatuses.forEach(i -> i.setProjectName(this));
-        }
-        this.projectStatuses = projectStatuses;
-    }
-
-    public Project projectStatuses(Set<ProjectStatus> projectStatuses) {
-        this.setProjectStatuses(projectStatuses);
-        return this;
-    }
-
-    public Project addProjectStatus(ProjectStatus projectStatus) {
-        this.projectStatuses.add(projectStatus);
-        projectStatus.setProjectName(this);
-        return this;
-    }
-
-    public Project removeProjectStatus(ProjectStatus projectStatus) {
-        this.projectStatuses.remove(projectStatus);
-        projectStatus.setProjectName(null);
         return this;
     }
 
@@ -507,6 +416,19 @@ public class Project implements Serializable {
         return this;
     }
 
+    public ProjectStatusCode getProjectStatusCode() {
+        return this.projectStatusCode;
+    }
+
+    public void setProjectStatusCode(ProjectStatusCode projectStatusCode) {
+        this.projectStatusCode = projectStatusCode;
+    }
+
+    public Project projectStatusCode(ProjectStatusCode projectStatusCode) {
+        this.setProjectStatusCode(projectStatusCode);
+        return this;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 
     @Override
@@ -544,9 +466,6 @@ public class Project implements Serializable {
             ", lastModifyBy='" + getLastModifyBy() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", notes='" + getNotes() + "'" +
-            ", objectives='" + getObjectives() + "'" +
-            ", todo='" + getTodo() + "'" +
-            ", progress=" + getProgress() +
             "}";
     }
 }

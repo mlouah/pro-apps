@@ -1,8 +1,7 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="MoMHeading">
-      <span class="$blue-100">{{ moMS.length }}</span>
-      <span v-text="$t('proAppsApp.moM.home.title')" id="mo-m-heading">Minutes</span>
+      <span v-text="$t('proAppsApp.moM.home.title')" id="mo-m-heading">Mo MS</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
@@ -28,84 +27,62 @@
             <th scope="row"><span v-text="$t('proAppsApp.moM.title')">Title</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.meetingDate')">Meeting Date</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.minutesWritingDate')">Minutes Writing Date</span></th>
-            <!--
-               <th scope="row"><span v-text="$t('proAppsApp.moM.meetingObjectif')">Meeting Objectif</span></th>
-               <th scope="row"><span v-text="$t('proAppsApp.moM.meetingDocReferences')">Meeting Doc References</span></th>
-            -->
-            <th scope="row"><span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">MoM Managed ?</span></th>
-            <!--
+            <th scope="row"><span v-text="$t('proAppsApp.moM.meetingObjectif')">Meeting Objectif</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.meetingDocReferences')">Meeting Doc References</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.moM.isMoMActionsClosed')">Is Mo M Actions Closed</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.subjectDecisions')">Subject Decisions</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.meetingPhotoCapture')">Meeting Photo Capture</span></th>
-          
             <th scope="row"><span v-text="$t('proAppsApp.moM.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.moM.createdBy')">Created By</span></th>
-           
             <th scope="row"><span v-text="$t('proAppsApp.moM.attendees')">Attendees</span></th>
-           
             <th scope="row"><span v-text="$t('proAppsApp.moM.notes')">Notes</span></th>
-             -->
             <th scope="row"><span v-text="$t('proAppsApp.moM.projet')">Projet</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
-
         <tbody>
           <tr v-for="moM in moMS" :key="moM.id" data-cy="entityTable">
             <td>
               <router-link :to="{ name: 'MoMView', params: { moMId: moM.id } }">{{ moM.id }}</router-link>
             </td>
-            <td>
-              <b>{{ moM.title }}</b>
-            </td>
+            <td>{{ moM.title }}</td>
             <td>{{ moM.meetingDate }}</td>
             <td>{{ moM.minutesWritingDate }}</td>
-            <!--<td>{{ moM.meetingObjectif }}</td> 
+            <td>{{ moM.meetingObjectif }}</td>
             <td>{{ moM.meetingDocReferences }}</td>
-            -->
-
+            <td>{{ moM.isMoMActionsClosed }}</td>
+            <td>{{ moM.subjectDecisions }}</td>
             <td>
-              <div v-if="!moM.isMoMActionsClosed">
-                <div v-if="isStatusMoMDelayed(moM.meetingDate)">
-                  <span style="color: red"> <font-awesome-icon icon="bell"></font-awesome-icon> {{ getDayDiff(moM.meetingDate) }} </span>
-                </div>
-                <div v-else style="color: blue">{{ getDayDiff(moM.meetingDate) }}</div>
-              </div>
-
-              <div v-else style="color: forestgreen">
-                Action(s) traitée(s)
-                <!--<font-awesome-icon icon="check"></font-awesome-icon> -->
-              </div>
+              <a v-if="moM.meetingPhotoCapture" v-on:click="openFile(moM.meetingPhotoCaptureContentType, moM.meetingPhotoCapture)">
+                <img
+                  v-bind:src="'data:' + moM.meetingPhotoCaptureContentType + ';base64,' + moM.meetingPhotoCapture"
+                  style="max-height: 30px"
+                  alt="moM image"
+                />
+              </a>
+              <span v-if="moM.meetingPhotoCapture">{{ moM.meetingPhotoCaptureContentType }}, {{ byteSize(moM.meetingPhotoCapture) }}</span>
             </td>
-
-            <!-- <td>{{ moM.subjectDecisions }}</td> -->
-
-            <!--
             <td>{{ moM.dateCreation ? $d(Date.parse(moM.dateCreation), 'short') : '' }}</td>
             <td>{{ moM.dateModify ? $d(Date.parse(moM.dateModify), 'short') : '' }}</td>
             <td>{{ moM.lastModifyBy }}</td>
             <td>{{ moM.createdBy }}</td>
-           
             <td>{{ moM.attendees }}</td>
             <td>{{ moM.notes }}</td>
-             -->
             <td>
               <div v-if="moM.projet">
                 <router-link :to="{ name: 'ProjectView', params: { projectId: moM.projet.id } }">{{ moM.projet.code }}</router-link>
               </div>
             </td>
-
             <td class="text-right">
               <div class="btn-group">
-                <!--
                 <router-link :to="{ name: 'MoMView', params: { moMId: moM.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
-                -->
                 <router-link :to="{ name: 'MoMEdit', params: { moMId: moM.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>

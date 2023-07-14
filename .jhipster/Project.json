@@ -83,12 +83,6 @@
       "relationshipType": "one-to-many"
     },
     {
-      "otherEntityName": "projectStatus",
-      "otherEntityRelationshipName": "projectName",
-      "relationshipName": "projectStatus",
-      "relationshipType": "one-to-many"
-    },
-    {
       "otherEntityField": "code",
       "otherEntityName": "projectPriority",
       "otherEntityRelationshipName": "project",
@@ -122,6 +116,13 @@
       "otherEntityRelationshipName": "project",
       "relationshipName": "company",
       "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "code",
+      "otherEntityName": "projectStatusCode",
+      "relationshipName": "projectStatusCode",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": ["required"]
     }
   ],
   "service": "serviceClass"

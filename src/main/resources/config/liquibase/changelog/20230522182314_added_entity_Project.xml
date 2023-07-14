@@ -53,15 +53,6 @@
             <column name="notes" type="${clobType}">
                 <constraints nullable="true" />
             </column>
-            <column name="objectives" type="${clobType}">
-                <constraints nullable="true" />
-            </column>
-            <column name="todo" type="${clobType}">
-                <constraints nullable="true" />
-            </column>
-            <column name="progress" type="${floatType}">
-                <constraints nullable="true" />
-            </column>
             <column name="project_priority_id" type="bigint">
                 <constraints nullable="true" />
             </column>
@@ -77,7 +68,7 @@
             <column name="company_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="project_status_id" type="bigint">
+            <column name="project_status_code_id" type="bigint">
                 <constraints nullable="false" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
@@ -116,10 +107,7 @@
             <column name="last_modify_by" type="string"/>
             <column name="created_by" type="string"/>
             <column name="notes" type="clob"/>
-            <column name="objectives" type="clob"/>
-            <column name="todo" type="clob"/>
-            <column name="progress" type="numeric"/>
-            <column name="project_status_id" type="numeric"/>
+            <column name="project_status_code_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

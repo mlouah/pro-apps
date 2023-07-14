@@ -1,11 +1,11 @@
 import { IMoM } from '@/shared/model/mo-m.model';
 import { ITask } from '@/shared/model/task.model';
-import { IProjectStatus } from '@/shared/model/project-status.model';
 import { IProjectPriority } from '@/shared/model/project-priority.model';
 import { IProjectCategory } from '@/shared/model/project-category.model';
 import { IClient } from '@/shared/model/client.model';
 import { IPerson } from '@/shared/model/person.model';
 import { ICompany } from '@/shared/model/company.model';
+import { IProjectStatusCode } from '@/shared/model/project-status-code.model';
 
 export interface IProject {
   id?: number;
@@ -24,12 +24,12 @@ export interface IProject {
   notes?: string | null;
   moMTitles?: IMoM[] | null;
   tasks?: ITask[] | null;
-  projectStatuses?: IProjectStatus[] | null;
   projectPriority?: IProjectPriority | null;
   projectCategory?: IProjectCategory | null;
   clientCode?: IClient | null;
   internalProjectManager?: IPerson | null;
   company?: ICompany | null;
+  projectStatusCode?: IProjectStatusCode;
 }
 
 export class Project implements IProject {
@@ -50,11 +50,11 @@ export class Project implements IProject {
     public notes?: string | null,
     public moMTitles?: IMoM[] | null,
     public tasks?: ITask[] | null,
-    public projectStatuses?: IProjectStatus[] | null,
     public projectPriority?: IProjectPriority | null,
     public projectCategory?: IProjectCategory | null,
     public clientCode?: IClient | null,
     public internalProjectManager?: IPerson | null,
-    public company?: ICompany | null
+    public company?: ICompany | null,
+    public projectStatusCode?: IProjectStatusCode
   ) {}
 }

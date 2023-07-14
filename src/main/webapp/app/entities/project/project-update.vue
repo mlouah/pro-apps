@@ -247,40 +247,6 @@
             ></textarea>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('proAppsApp.project.objectives')" for="project-objectives">Objectives</label>
-            <textarea
-              class="form-control"
-              name="objectives"
-              id="project-objectives"
-              data-cy="objectives"
-              :class="{ valid: !$v.project.objectives.$invalid, invalid: $v.project.objectives.$invalid }"
-              v-model="$v.project.objectives.$model"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('proAppsApp.project.todo')" for="project-todo">Todo</label>
-            <textarea
-              class="form-control"
-              name="todo"
-              id="project-todo"
-              data-cy="todo"
-              :class="{ valid: !$v.project.todo.$invalid, invalid: $v.project.todo.$invalid }"
-              v-model="$v.project.todo.$model"
-            ></textarea>
-          </div>
-          <div class="form-group">
-            <label class="form-control-label" v-text="$t('proAppsApp.project.progress')" for="project-progress">Progress</label>
-            <input
-              type="number"
-              class="form-control"
-              name="progress"
-              id="project-progress"
-              data-cy="progress"
-              :class="{ valid: !$v.project.progress.$invalid, invalid: $v.project.progress.$invalid }"
-              v-model.number="$v.project.progress.$model"
-            />
-          </div>
-          <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.project.projectPriority')" for="project-projectPriority"
               >Project Priority</label
             >
@@ -382,31 +348,33 @@
             </select>
           </div>
           <div class="form-group">
-            <label class="form-control-label" v-text="$t('proAppsApp.project.projectStatus')" for="project-projectStatus"
-              >Project Status</label
+            <label class="form-control-label" v-text="$t('proAppsApp.project.projectStatusCode')" for="project-projectStatusCode"
+              >Project Status Code</label
             >
             <select
               class="form-control"
-              id="project-projectStatus"
-              data-cy="projectStatus"
-              name="projectStatus"
-              v-model="project.projectStatus"
+              id="project-projectStatusCode"
+              data-cy="projectStatusCode"
+              name="projectStatusCode"
+              v-model="project.projectStatusCode"
               required
             >
-              <option v-if="!project.projectStatus" v-bind:value="null" selected></option>
+              <option v-if="!project.projectStatusCode" v-bind:value="null" selected></option>
               <option
                 v-bind:value="
-                  project.projectStatus && taskStatusOption.id === project.projectStatus.id ? project.projectStatus : taskStatusOption
+                  project.projectStatusCode && projectStatusCodeOption.id === project.projectStatusCode.id
+                    ? project.projectStatusCode
+                    : projectStatusCodeOption
                 "
-                v-for="taskStatusOption in taskStatuses"
-                :key="taskStatusOption.id"
+                v-for="projectStatusCodeOption in projectStatusCodes"
+                :key="projectStatusCodeOption.id"
               >
-                {{ taskStatusOption.code }}
+                {{ projectStatusCodeOption.code }}
               </option>
             </select>
           </div>
-          <div v-if="$v.project.projectStatus.$anyDirty && $v.project.projectStatus.$invalid">
-            <small class="form-text text-danger" v-if="!$v.project.projectStatus.required" v-text="$t('entity.validation.required')">
+          <div v-if="$v.project.projectStatusCode.$anyDirty && $v.project.projectStatusCode.$invalid">
+            <small class="form-text text-danger" v-if="!$v.project.projectStatusCode.required" v-text="$t('entity.validation.required')">
               This field is required.
             </small>
           </div>

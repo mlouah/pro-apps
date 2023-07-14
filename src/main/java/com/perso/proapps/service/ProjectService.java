@@ -99,15 +99,6 @@ public class ProjectService {
                 if (project.getNotes() != null) {
                     existingProject.setNotes(project.getNotes());
                 }
-                if (project.getObjectives() != null) {
-                    existingProject.setObjectives(project.getObjectives());
-                }
-                if (project.getTodo() != null) {
-                    existingProject.setTodo(project.getTodo());
-                }
-                if (project.getProgress() != null) {
-                    existingProject.setProgress(project.getProgress());
-                }
 
                 return existingProject;
             })

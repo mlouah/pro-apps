@@ -26,28 +26,19 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
         return this.findAllWithToOneRelationships(pageable);
     }
 
-    // query 1
     @Query(
         value = "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company",
         countQuery = "select count(distinct project) from Project project"
     )
     Page<Project> findAllWithToOneRelationships(Pageable pageable);
 
-    // query 2
     @Query(
-        "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company WHERE  project.id <5 "
+        "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company"
     )
     List<Project> findAllWithToOneRelationships();
 
-    // query 3
     @Query(
         "select project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company where project.id =:id"
     )
     Optional<Project> findOneWithToOneRelationships(@Param("id") Long id);
-
-    // query 4 - mlouah new
-    @Query(
-        "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company WHERE  project.company.code ='S2M' "
-    )
-    List<Project> findAll();
 }

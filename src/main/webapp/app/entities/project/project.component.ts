@@ -80,18 +80,4 @@ export default class Project extends mixins(JhiDataUtils) {
   public closeDialog(): void {
     (<any>this.$refs.removeEntity).hide();
   }
-
-  // formatPrice
-  public formatPrice(value, precision) {
-    let val = (value / 1).toFixed(precision).replace('.', ',');
-    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-  }
-
-  public getShortContent(str, num) {
-    if (typeof str === 'string') {
-      return str.substring(0, num) + ' ...';
-    }
-    return str;
-  }
-  // end class
 }

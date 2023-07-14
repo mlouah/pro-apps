@@ -38,10 +38,10 @@
                                  referencedColumnNames="id"
                                  referencedTableName="company"/>
 
-        <addForeignKeyConstraint baseColumnNames="project_status_id"
+        <addForeignKeyConstraint baseColumnNames="project_status_code_id"
                                  baseTableName="project"
-                                 constraintName="fk_project__project_status_id"
+                                 constraintName="fk_project__project_status_code_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="task_status"/>
+                                 referencedTableName="project_status_code"/>
     </changeSet>
 </databaseChangeLog>
