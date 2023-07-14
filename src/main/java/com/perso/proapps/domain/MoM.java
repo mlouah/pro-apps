@@ -97,14 +97,7 @@ public class MoM implements Serializable {
     @ManyToOne
     @JsonIgnoreProperties(
         value = {
-            "moMTitles",
-            "tasks",
-            "projectStatuses",
-            "projectPriority",
-            "projectCategory",
-            "clientCode",
-            "internalProjectManager",
-            "company",
+            "moMTitles", "tasks", "projectPriority", "projectCategory", "clientCode", "internalProjectManager", "company", "projectStatus",
         },
         allowSetters = true
     )

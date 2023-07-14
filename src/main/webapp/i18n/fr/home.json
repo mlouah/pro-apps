@@ -1,7 +1,7 @@
 {
   "home": {
     "title": "Bienvenue!",
-    "subtitle": "Ceci est page d'accueil du portail S2M DATA",
+    "subtitle": "Ceci est la page d'accueil du portail S2M DATA",
     "logged": {
       "message": "Vous êtes connecté en tant que \"{{username}}\"."
     },

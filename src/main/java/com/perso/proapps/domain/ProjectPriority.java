@@ -9,11 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A ProjectPriority.
@@ -22,7 +17,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "project_priority")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@EntityListeners(AuditingEntityListener.class)
 public class ProjectPriority implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -39,24 +33,17 @@ public class ProjectPriority implements Serializable {
     @Column(name = "priority")
     private String priority;
 
-    // audit start
-    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
-    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
-    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
-    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
-
-    // audit end
 
     @Column(name = "notes")
     private String notes;
@@ -65,14 +52,7 @@ public class ProjectPriority implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(
         value = {
-            "moMTitles",
-            "tasks",
-            "projectStatuses",
-            "projectPriority",
-            "projectCategory",
-            "clientCode",
-            "internalProjectManager",
-            "company",
+            "moMTitles", "tasks", "projectPriority", "projectCategory", "clientCode", "internalProjectManager", "company", "projectStatus",
         },
         allowSetters = true
     )

@@ -103,11 +103,33 @@ export default class MoM extends mixins(JhiDataUtils) {
     return `${this.padTo2Digits(hours)}h:${this.padTo2Digits(minutes)}m:${this.padTo2Digits(seconds)}`;
   }
 
-  public getDayDiff(datecreation) {
-    let startDate = new Date(datecreation);
-    let endDate = new Date();
+  public getDayDiff(meetingDateStr) {
+    let meetingDate = new Date(meetingDateStr);
+    let currentDate = new Date();
+
     const msInDay = 24 * 60 * 60 * 1000;
+    let diff = currentDate.getTime() - meetingDate.getTime();
     // 👇️ explicitly calling getTime()
-    return Math.round(Math.abs(endDate.getTime() - startDate.getTime()) / msInDay);
+    //return Math.round((currentDate.getTime() - meetingDate.getTime()) / msInDay);
+    if (diff < 0) {
+      return 'Meeting dans ' + Math.abs(Math.round(diff / msInDay)) + ' jour(s)';
+    } else {
+      return 'Retard traitement de  ' + Math.round(diff / msInDay) + ' jour(s)';
+    }
+  }
+
+  // actions du mom traitees a temps ou pas
+  public isStatusMoMDelayed(meetingDateStr) {
+    let res = true;
+    let meetingDate = new Date(meetingDateStr);
+    let currentDate = new Date();
+
+    const msInDay = 24 * 60 * 60 * 1000;
+    let diff = currentDate.getTime() - meetingDate.getTime();
+
+    if (diff < 0) {
+      res = false;
+    }
+    return res;
   }
 }

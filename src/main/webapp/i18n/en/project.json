@@ -2,7 +2,7 @@
   "proAppsApp": {
     "project": {
       "home": {
-        "title": "Project portfolio ",
+        "title": "Projects",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Project",
         "createOrEditLabel": "Create or edit a Project",
@@ -21,24 +21,27 @@
       "name": "Name",
       "code": "Code",
       "startDate": "Start Date",
-      "realEndtDate": "Real End Date",
+      "realEndtDate": "Real Endt Date",
       "projectDescription": "Project Description",
       "initialEndDate": "Initial End Date",
-      "initialCost": "Initial Cost(MAD)",
+      "initialCost": "Initial Cost",
       "initialWorkLoad": "Initial Work Load",
       "dateCreation": "Date Creation",
       "dateModify": "Date Modify",
       "lastModifyBy": "Last Modify By",
       "createdBy": "Created By",
       "notes": "Notes",
+      "objectives": "Objectives",
+      "todo": "Todo",
+      "progress": "Progress",
       "moMTitle": "Mo M Title",
       "tasks": "Tasks",
-      "projectStatus": "Project Status",
       "projectPriority": "Project Priority",
       "projectCategory": "Project Category",
       "clientCode": "Client Code",
       "internalProjectManager": "Internal Project Manager",
-      "company": "Company"
+      "company": "Company",
+      "projectStatus": "Project Status"
     }
   }
 }

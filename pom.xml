@@ -897,7 +897,8 @@
             </build>
             <properties>
                 <!-- default Spring profiles -->
-                <spring.profiles.active>dev${profile.no-liquibase}</spring.profiles.active>
+               <!-- <spring.profiles.active>dev${profile.no-liquibase}</spring.profiles.active>   -->
+				<spring.profiles.active>prod${profile.no-liquibase}</spring.profiles.active>
             </properties>
         </profile>
         <profile>

@@ -80,6 +80,17 @@ public class Project implements Serializable {
     @Column(name = "notes")
     private String notes;
 
+    @Lob
+    @Column(name = "objectives")
+    private String objectives;
+
+    @Lob
+    @Column(name = "todo")
+    private String todo;
+
+    @Column(name = "progress")
+    private Float progress;
+
     @OneToMany(mappedBy = "projet")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "tasks", "projet" }, allowSetters = true)
@@ -299,6 +310,45 @@ public class Project implements Serializable {
         this.notes = notes;
     }
 
+    public String getObjectives() {
+        return this.objectives;
+    }
+
+    public Project objectives(String objectives) {
+        this.setObjectives(objectives);
+        return this;
+    }
+
+    public void setObjectives(String objectives) {
+        this.objectives = objectives;
+    }
+
+    public String getTodo() {
+        return this.todo;
+    }
+
+    public Project todo(String todo) {
+        this.setTodo(todo);
+        return this;
+    }
+
+    public void setTodo(String todo) {
+        this.todo = todo;
+    }
+
+    public Float getProgress() {
+        return this.progress;
+    }
+
+    public Project progress(Float progress) {
+        this.setProgress(progress);
+        return this;
+    }
+
+    public void setProgress(Float progress) {
+        this.progress = progress;
+    }
+
     public Set<MoM> getMoMTitles() {
         return this.moMTitles;
     }
@@ -494,6 +544,9 @@ public class Project implements Serializable {
             ", lastModifyBy='" + getLastModifyBy() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", notes='" + getNotes() + "'" +
+            ", objectives='" + getObjectives() + "'" +
+            ", todo='" + getTodo() + "'" +
+            ", progress=" + getProgress() +
             "}";
     }
 }

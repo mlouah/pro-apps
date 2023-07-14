@@ -15,9 +15,6 @@ import { IMoM } from '@/shared/model/mo-m.model';
 import TaskService from '@/entities/task/task.service';
 import { ITask } from '@/shared/model/task.model';
 
-import ProjectStatusService from '@/entities/project-status/project-status.service';
-import { IProjectStatus } from '@/shared/model/project-status.model';
-
 import ProjectPriorityService from '@/entities/project-priority/project-priority.service';
 import { IProjectPriority } from '@/shared/model/project-priority.model';
 
@@ -32,6 +29,9 @@ import { IPerson } from '@/shared/model/person.model';
 
 import CompanyService from '@/entities/company/company.service';
 import { ICompany } from '@/shared/model/company.model';
+
+import TaskStatusService from '@/entities/task-status/task-status.service';
+import { ITaskStatus } from '@/shared/model/task-status.model';
 
 import { IProject, Project } from '@/shared/model/project.model';
 import ProjectService from './project.service';
@@ -55,6 +55,12 @@ const validations: any = {
     lastModifyBy: {},
     createdBy: {},
     notes: {},
+    objectives: {},
+    todo: {},
+    progress: {},
+    projectStatus: {
+      required,
+    },
   },
 };
 
@@ -75,10 +81,6 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
 
   public tasks: ITask[] = [];
 
-  @Inject('projectStatusService') private projectStatusService: () => ProjectStatusService;
-
-  public projectStatuses: IProjectStatus[] = [];
-
   @Inject('projectPriorityService') private projectPriorityService: () => ProjectPriorityService;
 
   public projectPriorities: IProjectPriority[] = [];
@@ -98,6 +100,10 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
   @Inject('companyService') private companyService: () => CompanyService;
 
   public companies: ICompany[] = [];
+
+  @Inject('taskStatusService') private taskStatusService: () => TaskStatusService;
+
+  public taskStatuses: ITaskStatus[] = [];
   public isSaving = false;
   public currentLanguage = '';
 
@@ -214,11 +220,6 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
       .then(res => {
         this.tasks = res.data;
       });
-    this.projectStatusService()
-      .retrieve()
-      .then(res => {
-        this.projectStatuses = res.data;
-      });
     this.projectPriorityService()
       .retrieve()
       .then(res => {
@@ -243,6 +244,11 @@ export default class ProjectUpdate extends mixins(JhiDataUtils) {
       .retrieve()
       .then(res => {
         this.companies = res.data;
+      });
+    this.taskStatusService()
+      .retrieve()
+      .then(res => {
+        this.taskStatuses = res.data;
       });
   }
 }

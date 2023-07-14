@@ -18,6 +18,11 @@
         "projectStatusCode": "Project Status Code",
         "projectPriority": "Project Priority",
         "projectCategory": "Project Category",
+        "project": "Project",
+        "moM": "Mo M",
+        "task": "Task",
+        "person": "Person",
+        "client": "Client",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

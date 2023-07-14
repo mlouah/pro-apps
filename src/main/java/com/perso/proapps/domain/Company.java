@@ -9,11 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A Company.
@@ -22,7 +17,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "company")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@EntityListeners(AuditingEntityListener.class)
 public class Company implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,24 +48,17 @@ public class Company implements Serializable {
     @Column(name = "logo_content_type")
     private String logoContentType;
 
-    // audit start
-    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
-    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
-    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
-    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
-
-    // audit end
 
     @Column(name = "notes")
     private String notes;
@@ -80,14 +67,7 @@ public class Company implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(
         value = {
-            "moMTitles",
-            "tasks",
-            "projectStatuses",
-            "projectPriority",
-            "projectCategory",
-            "clientCode",
-            "internalProjectManager",
-            "company",
+            "moMTitles", "tasks", "projectPriority", "projectCategory", "clientCode", "internalProjectManager", "company", "projectStatus",
         },
         allowSetters = true
     )

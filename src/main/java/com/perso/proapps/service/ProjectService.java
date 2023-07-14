@@ -99,6 +99,15 @@ public class ProjectService {
                 if (project.getNotes() != null) {
                     existingProject.setNotes(project.getNotes());
                 }
+                if (project.getObjectives() != null) {
+                    existingProject.setObjectives(project.getObjectives());
+                }
+                if (project.getTodo() != null) {
+                    existingProject.setTodo(project.getTodo());
+                }
+                if (project.getProgress() != null) {
+                    existingProject.setProgress(project.getProgress());
+                }
 
                 return existingProject;
             })
@@ -113,18 +122,6 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public List<Project> findAll() {
         log.debug("Request to get all Projects");
-        return projectRepository.findAll();
-    }
-
-    /**
-     * Get all the projects by company
-     *
-     * @return the list of entities.
-     */
-    @Transactional(readOnly = true)
-    public List<Project> findAll(String company) {
-        log.debug("Request to get all Projects");
-        // to be done
         return projectRepository.findAll();
     }
 
@@ -146,7 +143,6 @@ public class ProjectService {
     @Transactional(readOnly = true)
     public Optional<Project> findOne(Long id) {
         log.debug("Request to get Project : {}", id);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         return projectRepository.findOneWithEagerRelationships(id);
     }
 

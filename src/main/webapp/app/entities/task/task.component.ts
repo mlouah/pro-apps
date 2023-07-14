@@ -102,21 +102,4 @@ export default class Task extends mixins(JhiDataUtils) {
   public padTo2Digits(num: number) {
     return num.toString().padStart(2, '0');
   }
-
-  public currentDateTime() {
-    console.log('*******************   currentDateTime ****************');
-    const current = new Date();
-    const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-    const time = current.getHours() + ':' + current.getMinutes() + ':' + current.getSeconds();
-    const dateTime = date + ' ' + time;
-
-    return dateTime;
-  }
-
-  public currentDate() {
-    console.log('*******************   currentDate ****************');
-    const current = new Date();
-    const date = current.getFullYear() + '-' + (current.getMonth() + 1) + '-' + current.getDate();
-    return date;
-  }
 }

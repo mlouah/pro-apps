@@ -37,5 +37,11 @@
                                  constraintName="fk_project__company_id"
                                  referencedColumnNames="id"
                                  referencedTableName="company"/>
+
+        <addForeignKeyConstraint baseColumnNames="project_status_id"
+                                 baseTableName="project"
+                                 constraintName="fk_project__project_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="task_status"/>
     </changeSet>
 </databaseChangeLog>

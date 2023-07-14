@@ -2,14 +2,12 @@
   <div>
     <h2 id="page-heading" data-cy="TaskHeading">
       <span>{{ tasks.length }}</span>
-      <span v-text="$t('proAppsApp.task.home.title')" id="task-heading"> Tasks </span>
-
+      <span v-text="$t('proAppsApp.task.home.title')" id="task-heading"> Tasks</span>
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
           <span v-text="$t('proAppsApp.task.home.refreshListLabel')">Refresh List</span>
         </button>
-
         <router-link :to="{ name: 'TaskCreate' }" custom v-slot="{ navigate }">
           <button @click="navigate" id="jh-create-entity" data-cy="entityCreateButton" class="btn btn-primary jh-create-entity create-task">
             <font-awesome-icon icon="plus"></font-awesome-icon>
@@ -27,19 +25,16 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-
             <th scope="row"><span v-text="$t('proAppsApp.task.subject')">Subject</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskTitle')">Task Title</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.dealLine')">Deal Line</span></th>
-
             <th scope="row"><span v-text="$t('proAppsApp.task.isUrgent')">Is Urgent</span></th>
-            <!--
+            <!-- 
             <th scope="row"><span v-text="$t('proAppsApp.task.dateCreation')">Date Creation</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.dateModify')">Date Modify</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.createdBy')">Created By</span></th>
             -->
-            <th scope="row"><span v-text="$t('proAppsApp.task.notes')">Notes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskStatus')">Task Status</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskMoM')">Task Mo M</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.projectName')">Project Name</span></th>
@@ -52,11 +47,13 @@
             <td>
               <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }">{{ task.id }}</router-link>
             </td>
-
             <td>{{ task.subject }}</td>
             <td>{{ task.taskTitle }}</td>
+
             <td>
-              <span v-if="isSameDay(task.dealLine)" class="text-danger">(*)</span>
+              <span v-if="isSameDay(task.dealLine)" class="text-danger">
+                <span style="color: red"> <b>(*) </b> </span>
+              </span>
               {{ task.dealLine }}
             </td>
 
@@ -68,9 +65,7 @@
             <td>{{ task.dateModify ? $d(Date.parse(task.dateModify), 'short') : '' }}</td>
             <td>{{ task.lastModifyBy }}</td>
             <td>{{ task.createdBy }}</td>
--->
-            <td><span v-html="task.notes"></span></td>
-
+           -->
             <td>
               <div v-if="task.taskStatus">
                 <router-link :to="{ name: 'TaskStatusView', params: { taskStatusId: task.taskStatus.id } }">{{
@@ -97,12 +92,14 @@
             </td>
             <td class="text-right">
               <div class="btn-group">
+                <!--
                 <router-link :to="{ name: 'TaskView', params: { taskId: task.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-info btn-sm details" data-cy="entityDetailsButton">
                     <font-awesome-icon icon="eye"></font-awesome-icon>
                     <span class="d-none d-md-inline" v-text="$t('entity.action.view')">View</span>
                   </button>
                 </router-link>
+                -->
                 <router-link :to="{ name: 'TaskEdit', params: { taskId: task.id } }" custom v-slot="{ navigate }">
                   <button @click="navigate" class="btn btn-primary btn-sm edit" data-cy="entityEditButton">
                     <font-awesome-icon icon="pencil-alt"></font-awesome-icon>
