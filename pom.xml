@@ -7,7 +7,7 @@
 
     <groupId>com.perso.proapps</groupId>
     <artifactId>pro-apps</artifactId>
-    <version>1.0.0</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
     <name>Professional  Apps</name>
     <description>All apps you need to run a tech company </description>
