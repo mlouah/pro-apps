@@ -22,6 +22,9 @@ export interface IProject {
   lastModifyBy?: string | null;
   createdBy?: string | null;
   notes?: string | null;
+  alertes?: string | null;
+  todo?: string | null;
+  progress?: number | null;
   moMTitles?: IMoM[] | null;
   tasks?: ITask[] | null;
   projectPriority?: IProjectPriority | null;
@@ -48,6 +51,9 @@ export class Project implements IProject {
     public lastModifyBy?: string | null,
     public createdBy?: string | null,
     public notes?: string | null,
+    public alertes?: string | null,
+    public todo?: string | null,
+    public progress?: number | null,
     public moMTitles?: IMoM[] | null,
     public tasks?: ITask[] | null,
     public projectPriority?: IProjectPriority | null,

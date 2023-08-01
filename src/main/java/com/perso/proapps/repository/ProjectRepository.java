@@ -26,19 +26,23 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
         return this.findAllWithToOneRelationships(pageable);
     }
 
+    default List<Project> findAll() {
+        return this.findAllWithToOneRelationships();
+    }
+
     @Query(
-        value = "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company",
+        value = "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company left join fetch project.projectStatusCode",
         countQuery = "select count(distinct project) from Project project"
     )
     Page<Project> findAllWithToOneRelationships(Pageable pageable);
 
     @Query(
-        "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company"
+        "select distinct project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company left join fetch project.projectStatusCode WHERE  project.company.id =1"
     )
     List<Project> findAllWithToOneRelationships();
 
     @Query(
-        "select project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company where project.id =:id"
+        "select project from Project project left join fetch project.projectPriority left join fetch project.projectCategory left join fetch project.clientCode left join fetch project.internalProjectManager left join fetch project.company left join fetch project.projectStatusCode where project.id =:id "
     )
     Optional<Project> findOneWithToOneRelationships(@Param("id") Long id);
 }

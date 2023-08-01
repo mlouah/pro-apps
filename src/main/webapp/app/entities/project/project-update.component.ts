@@ -55,6 +55,9 @@ const validations: any = {
     lastModifyBy: {},
     createdBy: {},
     notes: {},
+    alertes: {},
+    todo: {},
+    progress: {},
     projectStatusCode: {
       required,
     },

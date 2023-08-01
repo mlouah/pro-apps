@@ -76,21 +76,24 @@ WHERE
 */
 
 SELECT 
-    t.id,
+    t.id 'Task ID',
+    p.code 'Project',
     t.subject,
     t.task_title,
     t.deal_line,
     t.is_urgent,
-    t.notes
+    ts.code
 FROM
     `my-pro-apps-prod`.task t,
-    `my-pro-apps-prod`.project p
+    `my-pro-apps-prod`.project p,
+    `my-pro-apps-prod`.task_status ts
 WHERE
-    project_name_id = 2
+    project_name_id = 10
         AND p.id = t.project_name_id
+        AND t.task_status_id = ts.id
 
 /*
-      Liste des actions d'un MoM
+      Action(s) d'un MoM
 */
 
 SELECT 
@@ -109,3 +112,29 @@ WHERE
     t.task_mom_id = 25
         AND m.id = t.task_mom_id
         AND t.task_status_id = s.id
+
+/*
+      Liste des taches période 
+*/
+
+SELECT 
+    p.code 'projet',
+    t.id,
+    t.subject,
+    t.task_title,
+    t.deal_line,
+    t.is_urgent,
+    s.code 'Status',
+    t.date_modify
+FROM
+    `my-pro-apps-prod`.task t,
+    `my-pro-apps-prod`.project p,
+    `my-pro-apps-prod`.task_status s
+WHERE
+    t.date_modify < '2023-07-30'
+        AND t.date_modify > '2023-07-13'
+        AND p.id = t.project_name_id
+        AND s.id = t.task_status_id
+       
+
+

@@ -3,14 +3,14 @@
     <div class="col-8">
       <div v-if="project">
         <h2 class="jh-entity-heading" data-cy="projectDetailsHeading">
-          <span v-text="$t('proAppsApp.project.detail.title')">Project</span> {{ project.id }}
+          {{ project.name }}
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('proAppsApp.project.name')">Name</span>
+            <span>ID </span>
           </dt>
           <dd>
-            <span>{{ project.name }}</span>
+            <span>{{ project.id }} </span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.project.code')">Code</span>
@@ -18,6 +18,29 @@
           <dd>
             <span>{{ project.code }}</span>
           </dd>
+          <!-- start progress -->
+          <dt>
+            <span v-text="$t('proAppsApp.project.progress')">Code</span>
+          </dt>
+          <dd>
+            <span style="font-weight: 500">{{ project.progress }}%</span>
+          </dd>
+          <!-- end  progress -->
+
+          <dt><font-awesome-icon icon="eye"></font-awesome-icon> <span v-text="$t('proAppsApp.project.alertes')">Alertes</span></dt>
+          <dd>
+            <span style="background-color: rgb(230, 234, 16)">{{ project.alertes }}</span>
+          </dd>
+
+          <!-- start todo -->
+          <dt>
+            <span v-text="$t('proAppsApp.project.todo')">Code</span>
+          </dt>
+          <dd>
+            <span style="background-color: rgba(216, 204, 236, 0.176)">{{ project.todo }}</span>
+          </dd>
+          <!-- end  todo -->
+
           <dt>
             <span v-text="$t('proAppsApp.project.startDate')">Start Date</span>
           </dt>
@@ -34,7 +57,7 @@
             <span v-text="$t('proAppsApp.project.projectDescription')">Project Description</span>
           </dt>
           <dd>
-            <span>{{ project.projectDescription }}</span>
+            <span v-html="project.projectDescription"> </span>
           </dd>
           <dt>
             <span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span>
@@ -82,8 +105,9 @@
             <span v-text="$t('proAppsApp.project.notes')">Notes</span>
           </dt>
           <dd>
-            <span>{{ project.notes }}</span>
+            <span v-html="project.projectDenotesscription"> </span>
           </dd>
+
           <dt>
             <span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span>
           </dt>

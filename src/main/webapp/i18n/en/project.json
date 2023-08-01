@@ -20,9 +20,9 @@
       "id": "ID",
       "name": "Name",
       "code": "Code",
-      "startDate": "Start Date",
-      "realEndtDate": "Real Endt Date",
-      "projectDescription": "Project Description",
+      "startDate": "Start",
+      "realEndtDate": "Date",
+      "projectDescription": "Description",
       "initialEndDate": "Initial End Date",
       "initialCost": "Initial Cost",
       "initialWorkLoad": "Initial Work Load",
@@ -31,14 +31,17 @@
       "lastModifyBy": "Last Modify By",
       "createdBy": "Created By",
       "notes": "Notes",
-      "moMTitle": "Mo M Title",
+      "alertes": "Alertes",
+      "todo": "Todo",
+      "progress": "Progress (%)",
+      "moMTitle": "MoM",
       "tasks": "Tasks",
-      "projectPriority": "Project Priority",
-      "projectCategory": "Project Category",
-      "clientCode": "Client Code",
-      "internalProjectManager": "Internal Project Manager",
+      "projectPriority": "Priority",
+      "projectCategory": "Category",
+      "clientCode": "Client",
+      "internalProjectManager": "Project Manager",
       "company": "Company",
-      "projectStatusCode": "Project Status Code"
+      "projectStatusCode": "Status"
     }
   }
 }

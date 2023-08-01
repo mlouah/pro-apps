@@ -10,6 +10,11 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A Project.
@@ -18,6 +23,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "project")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
+@EntityListeners(AuditingEntityListener.class)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -54,21 +60,34 @@ public class Project implements Serializable {
     @Column(name = "initial_work_load")
     private Integer initialWorkLoad;
 
+    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
+    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
+    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
+    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 
     @Lob
     @Column(name = "notes")
     private String notes;
+
+    @Column(name = "alertes")
+    private String alertes;
+
+    @Column(name = "todo")
+    private String todo;
+
+    @Column(name = "progress")
+    private Float progress;
 
     @OneToMany(mappedBy = "projet")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -289,6 +308,45 @@ public class Project implements Serializable {
         this.notes = notes;
     }
 
+    public String getAlertes() {
+        return this.alertes;
+    }
+
+    public Project alertes(String alertes) {
+        this.setAlertes(alertes);
+        return this;
+    }
+
+    public void setAlertes(String alertes) {
+        this.alertes = alertes;
+    }
+
+    public String getTodo() {
+        return this.todo;
+    }
+
+    public Project todo(String todo) {
+        this.setTodo(todo);
+        return this;
+    }
+
+    public void setTodo(String todo) {
+        this.todo = todo;
+    }
+
+    public Float getProgress() {
+        return this.progress;
+    }
+
+    public Project progress(Float progress) {
+        this.setProgress(progress);
+        return this;
+    }
+
+    public void setProgress(Float progress) {
+        this.progress = progress;
+    }
+
     public Set<MoM> getMoMTitles() {
         return this.moMTitles;
     }
@@ -466,6 +524,9 @@ public class Project implements Serializable {
             ", lastModifyBy='" + getLastModifyBy() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", notes='" + getNotes() + "'" +
+            ", alertes='" + getAlertes() + "'" +
+            ", todo='" + getTodo() + "'" +
+            ", progress=" + getProgress() +
             "}";
     }
 }

@@ -50,6 +50,7 @@
               </small>
             </div>
           </div>
+          <!-- start date -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.project.startDate')" for="project-startDate">Start Date</label>
             <b-input-group class="mb-3">
@@ -78,6 +79,21 @@
               />
             </b-input-group>
           </div>
+          <!-- start Alert -->
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('proAppsApp.project.alertes')" for="project-alertes">Alertes</label>
+            <textarea
+              style="border-color: coral"
+              type="text"
+              class="form-control"
+              name="alertes"
+              id="project-alertes"
+              data-cy="alertes"
+              :class="{ valid: !$v.project.alertes.$invalid, invalid: $v.project.alertes.$invalid }"
+              v-model="$v.project.alertes.$model"
+            />
+          </div>
+          <!-- start Alert -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.project.realEndtDate')" for="project-realEndtDate"
               >Real Endt Date</label
@@ -177,6 +193,35 @@
               v-model.number="$v.project.initialWorkLoad.$model"
             />
           </div>
+          <!--  start progress  -->
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('proAppsApp.project.progress')" for="project-progress">Progress</label>
+            <input
+              type="number"
+              class="form-control"
+              name="progress"
+              id="project-progress"
+              data-cy="progress"
+              :class="{ valid: !$v.project.progress.$invalid, invalid: $v.project.progress.$invalid }"
+              v-model.number="$v.project.progress.$model"
+            />
+          </div>
+
+          <!--  start todo  -->
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('proAppsApp.project.todo')" for="project-todo">Progress </label>
+            <textarea
+              type="text"
+              class="form-control"
+              name="todo"
+              id="project-todo"
+              data-cy="todo"
+              :class="{ valid: !$v.project.todo.$invalid, invalid: $v.project.todo.$invalid }"
+              v-model.number="$v.project.todo.$model"
+            />
+          </div>
+
+          <!-- end todo -->
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.project.dateCreation')" for="project-dateCreation"
               >Date Creation</label
@@ -246,6 +291,7 @@
               v-model="$v.project.notes.$model"
             ></textarea>
           </div>
+
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.project.projectPriority')" for="project-projectPriority"
               >Project Priority</label

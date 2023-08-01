@@ -60,6 +60,18 @@
       "fieldName": "notes",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "alertes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "todo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "progress",
+      "fieldType": "Float"
     }
   ],
   "fluentMethods": true,

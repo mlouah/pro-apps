@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2 id="page-heading" data-cy="ProjectHeading">
+      <span> {{ projects.length }} </span>
       <span v-text="$t('proAppsApp.project.home.title')" id="project-heading">Projects</span>
+
       <div class="d-flex justify-content-end">
         <button class="btn btn-info mr-2" v-on:click="handleSyncList" :disabled="isFetching">
           <font-awesome-icon icon="sync" :spin="isFetching"></font-awesome-icon>
@@ -29,10 +31,13 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.name')">Name</span></th>
+            <!-- <th scope="row"><span v-text="$t('proAppsApp.project.name')">Name</span></th> -->
             <th scope="row"><span v-text="$t('proAppsApp.project.code')">Code</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.startDate')">Start Date</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.realEndtDate')">Real Endt Date</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.realEndtDate')">Real End Date</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.progress')">Progress</span></th>
+
+            <!--
             <th scope="row"><span v-text="$t('proAppsApp.project.projectDescription')">Project Description</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialEndDate')">Initial End Date</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.initialCost')">Initial Cost</span></th>
@@ -42,11 +47,13 @@
             <th scope="row"><span v-text="$t('proAppsApp.project.lastModifyBy')">Last Modify By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.createdBy')">Created By</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.notes')">Notes</span></th>
+            -->
+            <th scope="row"><span v-text="$t('proAppsApp.project.alertes')">Alertes</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectPriority')">Project Priority</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.projectCategory')">Project Category</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.project.clientCode')">Client Code</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.internalProjectManager')">Internal Project Manager</span></th>
-            <th scope="row"><span v-text="$t('proAppsApp.project.company')">Company</span></th>
+            <!--  <th scope="row"><span v-text="$t('proAppsApp.project.internalProjectManager')">Internal Project Manager</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.project.company')">Company</span></th> -->
             <th scope="row"><span v-text="$t('proAppsApp.project.projectStatusCode')">Project Status Code</span></th>
             <th scope="row"></th>
           </tr>
@@ -56,10 +63,13 @@
             <td>
               <router-link :to="{ name: 'ProjectView', params: { projectId: project.id } }">{{ project.id }}</router-link>
             </td>
-            <td>{{ project.name }}</td>
+            <!--<td>{{ project.name }}</td>-->
             <td>{{ project.code }}</td>
             <td>{{ project.startDate }}</td>
             <td>{{ project.realEndtDate }}</td>
+            <td>{{ project.progress }}</td>
+
+            <!--
             <td>{{ project.projectDescription }}</td>
             <td>{{ project.initialEndDate }}</td>
             <td>{{ project.initialCost }}</td>
@@ -69,6 +79,8 @@
             <td>{{ project.lastModifyBy }}</td>
             <td>{{ project.createdBy }}</td>
             <td>{{ project.notes }}</td>
+            -->
+            <td style="color: brown">{{ project.alertes }}</td>
             <td>
               <div v-if="project.projectPriority">
                 <router-link :to="{ name: 'ProjectPriorityView', params: { projectPriorityId: project.projectPriority.id } }">{{
@@ -90,6 +102,7 @@
                 }}</router-link>
               </div>
             </td>
+            <!-- 
             <td>
               <div v-if="project.internalProjectManager">
                 <router-link :to="{ name: 'PersonView', params: { personId: project.internalProjectManager.id } }">{{
@@ -97,6 +110,7 @@
                 }}</router-link>
               </div>
             </td>
+           
             <td>
               <div v-if="project.company">
                 <router-link :to="{ name: 'CompanyView', params: { companyId: project.company.id } }">{{
@@ -104,6 +118,7 @@
                 }}</router-link>
               </div>
             </td>
+            -->
             <td>
               <div v-if="project.projectStatusCode">
                 <router-link :to="{ name: 'ProjectStatusCodeView', params: { projectStatusCodeId: project.projectStatusCode.id } }">{{
