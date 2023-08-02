@@ -87,6 +87,9 @@ public class TaskService {
                 if (task.getNotes() != null) {
                     existingTask.setNotes(task.getNotes());
                 }
+                if (task.getCloseDate() != null) {
+                    existingTask.setCloseDate(task.getCloseDate());
+                }
 
                 return existingTask;
             })

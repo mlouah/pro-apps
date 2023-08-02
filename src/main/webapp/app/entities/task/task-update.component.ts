@@ -37,6 +37,7 @@ const validations: any = {
     lastModifyBy: {},
     createdBy: {},
     notes: {},
+    closeDate: {},
   },
 };
 

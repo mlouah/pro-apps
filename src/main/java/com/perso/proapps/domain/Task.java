@@ -8,11 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * A Task.
@@ -21,7 +16,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Table(name = "task")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
-@EntityListeners(AuditingEntityListener.class)
 public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,25 +38,24 @@ public class Task implements Serializable {
     @Column(name = "is_urgent")
     private Boolean isUrgent;
 
-    @CreatedDate
     @Column(name = "date_creation")
     private Instant dateCreation;
 
-    @LastModifiedDate
     @Column(name = "date_modify")
     private Instant dateModify;
 
-    @LastModifiedBy
     @Column(name = "last_modify_by")
     private String lastModifyBy;
 
-    @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
 
     @Lob
     @Column(name = "notes")
     private String notes;
+
+    @Column(name = "close_date")
+    private LocalDate closeDate;
 
     @ManyToOne
     @JsonIgnoreProperties(value = { "tasks" }, allowSetters = true)
@@ -77,12 +70,12 @@ public class Task implements Serializable {
         value = {
             "moMTitles",
             "tasks",
-            "projectStatuses",
             "projectPriority",
             "projectCategory",
             "clientCode",
             "internalProjectManager",
             "company",
+            "projectStatusCode",
         },
         allowSetters = true
     )
@@ -224,6 +217,19 @@ public class Task implements Serializable {
         this.notes = notes;
     }
 
+    public LocalDate getCloseDate() {
+        return this.closeDate;
+    }
+
+    public Task closeDate(LocalDate closeDate) {
+        this.setCloseDate(closeDate);
+        return this;
+    }
+
+    public void setCloseDate(LocalDate closeDate) {
+        this.closeDate = closeDate;
+    }
+
     public TaskStatus getTaskStatus() {
         return this.taskStatus;
     }
@@ -309,6 +315,7 @@ public class Task implements Serializable {
             ", lastModifyBy='" + getLastModifyBy() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", notes='" + getNotes() + "'" +
+            ", closeDate='" + getCloseDate() + "'" +
             "}";
     }
 }

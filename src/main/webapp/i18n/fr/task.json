@@ -19,18 +19,19 @@
       },
       "id": "ID",
       "subject": "Subject",
-      "taskTitle": "Task Title",
+      "taskTitle": "Title",
       "dealLine": "Deal Line",
-      "isUrgent": "Is Urgent",
+      "isUrgent": "Urgent",
       "dateCreation": "Date Creation",
       "dateModify": "Date Modify",
       "lastModifyBy": "Last Modify By",
       "createdBy": "Created By",
       "notes": "Notes",
+      "closeDate": "Close Date",
       "taskStatus": "Task Status",
-      "taskMoM": "Task Mo M",
+      "taskMoM": "MoM",
       "projectName": "Project Name",
-      "taskOwner": "Task Owner"
+      "taskOwner": "Owner"
     }
   }
 }

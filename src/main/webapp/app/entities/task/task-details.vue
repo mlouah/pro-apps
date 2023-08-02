@@ -4,6 +4,7 @@
       <div v-if="task">
         <h2 class="jh-entity-heading" data-cy="taskDetailsHeading">
           <span v-text="$t('proAppsApp.task.detail.title')">Task</span> {{ task.id }}
+          <span v-if="task.closeDate" style="background-color: aquamarine">CLOSED</span>
         </h2>
         <dl class="row jh-entity-details">
           <dt>

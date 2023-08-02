@@ -126,6 +126,7 @@
               v-model="$v.task.lastModifyBy.$model"
             />
           </div>
+
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.task.createdBy')" for="task-createdBy">Created By</label>
             <input
@@ -138,6 +139,39 @@
               v-model="$v.task.createdBy.$model"
             />
           </div>
+          <!-- start Close date-->
+
+          <div class="form-group">
+            <label class="form-control-label" v-text="$t('proAppsApp.task.closeDate')" for="task-dealLine">Close date </label>
+            <b-input-group class="mb-3">
+              <b-input-group-prepend>
+                <b-form-datepicker
+                  aria-controls="task-closeDate"
+                  v-model="$v.task.closeDate.$model"
+                  name="closeDate"
+                  class="form-control"
+                  :locale="currentLanguage"
+                  button-only
+                  today-button
+                  reset-button
+                  close-button
+                >
+                </b-form-datepicker>
+              </b-input-group-prepend>
+              <b-form-input
+                id="task-closeDate"
+                data-cy="closeDate"
+                type="text"
+                class="form-control"
+                name="closeDate"
+                :class="{ valid: !$v.task.closeDate.$invalid, invalid: $v.task.closeDate.$invalid }"
+                v-model="$v.task.closeDate.$model"
+              />
+            </b-input-group>
+          </div>
+
+          <!-- end Close  date-->
+
           <div class="form-group">
             <label class="form-control-label" v-text="$t('proAppsApp.task.notes')" for="task-notes">Notes</label>
             <textarea

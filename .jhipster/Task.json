@@ -42,6 +42,10 @@
       "fieldName": "notes",
       "fieldType": "byte[]",
       "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "closeDate",
+      "fieldType": "LocalDate"
     }
   ],
   "fluentMethods": true,

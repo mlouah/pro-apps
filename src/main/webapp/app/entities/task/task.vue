@@ -39,6 +39,8 @@
             <th scope="row"><span v-text="$t('proAppsApp.task.taskMoM')">Task Mo M</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.projectName')">Project Name</span></th>
             <th scope="row"><span v-text="$t('proAppsApp.task.taskOwner')">Task Owner</span></th>
+            <th scope="row"><span v-text="$t('proAppsApp.task.closeDate')">close Date</span></th>
+
             <th scope="row"></th>
           </tr>
         </thead>
@@ -90,6 +92,13 @@
                 <router-link :to="{ name: 'PersonView', params: { personId: task.taskOwner.id } }">{{ task.taskOwner.name }}</router-link>
               </div>
             </td>
+
+            <td>
+              <div v-if="task.closeDate">
+                {{ task.closeDate }}
+              </div>
+            </td>
+
             <td class="text-right">
               <div class="btn-group">
                 <!--

@@ -14,6 +14,7 @@ export interface ITask {
   lastModifyBy?: string | null;
   createdBy?: string | null;
   notes?: string | null;
+  closeDate?: Date | null;
   taskStatus?: ITaskStatus | null;
   taskMoM?: IMoM | null;
   projectName?: IProject | null;
@@ -32,6 +33,7 @@ export class Task implements ITask {
     public lastModifyBy?: string | null,
     public createdBy?: string | null,
     public notes?: string | null,
+    public closeDate?: Date | null,
     public taskStatus?: ITaskStatus | null,
     public taskMoM?: IMoM | null,
     public projectName?: IProject | null,
