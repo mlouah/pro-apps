@@ -1,0 +1,1 @@
+select id,code,date_creation from client where ID > 6

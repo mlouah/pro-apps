@@ -1,0 +1,1 @@
+update client c  set  date_creation = current_date() where ID > 6

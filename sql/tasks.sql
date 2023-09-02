@@ -55,42 +55,57 @@ vw2023@mMM
       Liste des actions ouvertes
 */
 SELECT 
-    p.code 'projet',
-    t.id,
-    t.subject,
-    t.task_title,
-    t.deal_line,
-    t.is_urgent,
-    s.code 'Status'
+    IFNULL(UPPER(p.code), '- ') 'Projet',
+    t.id 'Task ID',
+    t.task_title 'Task',
+    DATE_FORMAT(t.date_creation, '%Y-%m-%d') 'Task Crea',
+    IFNULL(CONCAT(m.title, '[', m.id, '] ', m.meeting_date),
+            '-') 'MoM [ID]/Date',
+    s.code 'Status',
+    t.deal_line 'DL',
+    IF(CURDATE() - t.deal_line > 0,
+        CURDATE() - t.deal_line,
+        '') 'Delay'
 FROM
-    `my-pro-apps-prod`.task t,
-    `my-pro-apps-prod`.project p,
-    `my-pro-apps-prod`.task_status s
+    task t
+        LEFT OUTER JOIN
+    project p ON t.project_name_id = p.id
+        LEFT OUTER JOIN
+    task_status s ON t.task_status_id = s.id
+        LEFT OUTER JOIN
+    mo_m m ON t.task_mom_id = m.id
 WHERE
-    t.task_status_id <> 1
-        AND p.id = t.project_name_id
-        AND s.id = t.task_status_id
+    s.id NOT IN (1 , 4)
+ORDER BY p.name
 
 /*
-      Liste des actions pour un projet 
+      Liste des actions [OUVERTES] pour un projet 
 */
 
 SELECT 
+    IFNULL(UPPER(p.code), '- ') 'Projet',
     t.id 'Task ID',
-    p.code 'Project',
-    t.subject,
-    t.task_title,
-    t.deal_line,
-    t.is_urgent,
-    ts.code
+    t.task_title 'Task',
+    DATE_FORMAT(t.date_creation, '%Y-%m-%d') 'Task Crea',
+    IFNULL(CONCAT(m.title, '[', m.id, '] ', m.meeting_date),
+            '-') 'MoM [ID]/Date',
+    s.code 'Status',
+    t.deal_line 'DL',
+    IF(CURDATE() - t.deal_line > 0,
+        CURDATE() - t.deal_line,
+        '') 'Delay'
 FROM
-    `my-pro-apps-prod`.task t,
-    `my-pro-apps-prod`.project p,
-    `my-pro-apps-prod`.task_status ts
+    task t
+        LEFT OUTER JOIN
+    project p ON t.project_name_id = p.id
+        LEFT OUTER JOIN
+    task_status s ON t.task_status_id = s.id
+        LEFT OUTER JOIN
+    mo_m m ON t.task_mom_id = m.id
 WHERE
-    project_name_id = 10
-        AND p.id = t.project_name_id
-        AND t.task_status_id = ts.id
+    s.id NOT IN (1 , 4)
+    and p.ID=10
+ORDER BY p.name
 
 /*
       Action(s) d'un MoM
@@ -114,7 +129,7 @@ WHERE
         AND t.task_status_id = s.id
 
 /*
-      Liste des taches période 
+      Liste des taches période - NON STABLE
 */
 
 SELECT 
@@ -136,5 +151,4 @@ WHERE
         AND p.id = t.project_name_id
         AND s.id = t.task_status_id
        
-
 

@@ -1,0 +1,1 @@
+SELECT * FROM `my-pro-apps-prod`.project_priority;
