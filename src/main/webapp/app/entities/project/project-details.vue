@@ -105,7 +105,7 @@
             <span v-text="$t('proAppsApp.project.notes')">Notes</span>
           </dt>
           <dd>
-            <span v-html="project.projectDenotesscription"> </span>
+            <span v-html="project.notes"> </span>
           </dd>
 
           <dt>

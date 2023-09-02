@@ -61,6 +61,14 @@
           <dd>
             <span v-html="task.notes"></span>
           </dd>
+
+          <dt>
+            <span v-text="$t('proAppsApp.task.closeDate')">Task Status</span>
+          </dt>
+          <dd>
+            <span>{{ task.closeDate }}</span>
+          </dd>
+
           <dt>
             <span v-text="$t('proAppsApp.task.taskStatus')">Task Status</span>
           </dt>
@@ -69,6 +77,9 @@
               <router-link :to="{ name: 'TaskStatusView', params: { taskStatusId: task.taskStatus.id } }">{{
                 task.taskStatus.code
               }}</router-link>
+            </div>
+            <div div v-if="task.taskStatus.id == 2 && !task.closeDate">
+              <span style="color: red">WARNING: Closing date is empty while status=DONE</span>
             </div>
           </dd>
           <dt>
