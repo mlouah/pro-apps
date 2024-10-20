@@ -28,8 +28,8 @@ CREATE TABLE `task` (
   `task_title` varchar(255) NOT NULL,
   `deal_line` date DEFAULT NULL,
   `is_urgent` bit(1) DEFAULT NULL,
-  `date_creation` datetime(6),
-  `date_modify` datetime(6),
+  `date_creation` datetime(6) DEFAULT NULL,
+  `date_modify` datetime(6) DEFAULT NULL,
   `last_modify_by` varchar(255) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `notes` longtext,
@@ -37,6 +37,7 @@ CREATE TABLE `task` (
   `task_mom_id` bigint DEFAULT NULL,
   `project_name_id` bigint DEFAULT NULL,
   `task_owner_id` bigint DEFAULT NULL,
+  `close_date` datetime(6) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_task__task_status_id` (`task_status_id`),
   KEY `fk_task__task_mom_id` (`task_mom_id`),
@@ -46,7 +47,7 @@ CREATE TABLE `task` (
   CONSTRAINT `fk_task__task_mom_id` FOREIGN KEY (`task_mom_id`) REFERENCES `mo_m` (`id`),
   CONSTRAINT `fk_task__task_owner_id` FOREIGN KEY (`task_owner_id`) REFERENCES `person` (`id`),
   CONSTRAINT `fk_task__task_status_id` FOREIGN KEY (`task_status_id`) REFERENCES `task_status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=558 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -58,4 +59,4 @@ CREATE TABLE `task` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-14 18:18:42
+-- Dump completed on 2024-10-20  1:20:13

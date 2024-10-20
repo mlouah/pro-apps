@@ -32,8 +32,8 @@ CREATE TABLE `project` (
   `initial_end_date` date DEFAULT NULL,
   `initial_cost` double DEFAULT NULL,
   `initial_work_load` int DEFAULT NULL,
-  `date_creation` datetime(6),
-  `date_modify` datetime(6),
+  `date_creation` datetime(6) DEFAULT NULL,
+  `date_modify` datetime(6) DEFAULT NULL,
   `last_modify_by` varchar(255) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `notes` longtext,
@@ -44,8 +44,10 @@ CREATE TABLE `project` (
   `company_id` bigint DEFAULT NULL,
   `objectives` longtext,
   `progress` float DEFAULT NULL,
-  `todo` varchar(255) DEFAULT NULL,
+  `todo` varchar(1000) DEFAULT NULL,
   `project_status_id` bigint DEFAULT NULL,
+  `project_status_code_id` bigint DEFAULT NULL,
+  `alertes` varchar(600) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_project__project_priority_id` (`project_priority_id`),
   KEY `fk_project__project_category_id` (`project_category_id`),
@@ -57,7 +59,7 @@ CREATE TABLE `project` (
   CONSTRAINT `fk_project__internal_project_manager_id` FOREIGN KEY (`internal_project_manager_id`) REFERENCES `person` (`id`),
   CONSTRAINT `fk_project__project_category_id` FOREIGN KEY (`project_category_id`) REFERENCES `project_category` (`id`),
   CONSTRAINT `fk_project__project_priority_id` FOREIGN KEY (`project_priority_id`) REFERENCES `project_priority` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -69,4 +71,4 @@ CREATE TABLE `project` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-14 18:18:41
+-- Dump completed on 2024-10-20  1:20:15

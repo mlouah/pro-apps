@@ -33,8 +33,8 @@ CREATE TABLE `mo_m` (
   `subject_decisions` longtext,
   `meeting_photo_capture` longblob,
   `meeting_photo_capture_content_type` varchar(255) DEFAULT NULL,
-  `date_creation` datetime(6),
-  `date_modify` datetime(6),
+  `date_creation` datetime(6) DEFAULT NULL,
+  `date_modify` datetime(6) DEFAULT NULL,
   `last_modify_by` varchar(255) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `attendees` longtext,
@@ -43,7 +43,7 @@ CREATE TABLE `mo_m` (
   PRIMARY KEY (`id`),
   KEY `fk_mo_m__projet_id` (`projet_id`),
   CONSTRAINT `fk_mo_m__projet_id` FOREIGN KEY (`projet_id`) REFERENCES `project` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=279 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +55,4 @@ CREATE TABLE `mo_m` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-14 18:18:45
+-- Dump completed on 2024-10-20  1:20:14

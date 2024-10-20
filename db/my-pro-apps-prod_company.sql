@@ -30,13 +30,13 @@ CREATE TABLE `company` (
   `url` varchar(255) DEFAULT NULL,
   `logo` longblob,
   `logo_content_type` varchar(255) DEFAULT NULL,
-  `date_creation` datetime(6),
-  `date_modify` datetime(6),
+  `date_creation` datetime(6) DEFAULT NULL,
+  `date_modify` datetime(6) DEFAULT NULL,
   `last_modify_by` varchar(255) DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ CREATE TABLE `company` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-07-14 18:18:41
+-- Dump completed on 2024-10-20  1:20:13
